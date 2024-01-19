@@ -1,0 +1,18 @@
+
+{
+    "screens": {
+        "login": {
+            "welcome_aboard": "BIENVENUE À BORD",
+            "select_your_vehicle": "SÉLECTIONNEZ VOTRE VÉHICULE",
+            "username_placeholder": "Entrer identifiant",
+            "password_placeholder": "Entrer mot de passe",
+            "mileage_placeholder": "Enter the vehicle",
+            "button_login": "Connexion",
+            "button_select": "Sélectionner",
+            "error_label_required": "Ce champ est obligatoire.",
+            "error_label_all_fields": "Veuillez renseigner tous les champs.",
+            "error_label_failed_login": "Erreur lors de la connexion. Veuillez vérifier vos identifiants.",
+            "error_label_wrong_mileage": "Kilométrage inférieur au dernier enregistré. Veuillez rectifier votre saisie ou bien contacter un administrateur."
+        }
+    }
+}

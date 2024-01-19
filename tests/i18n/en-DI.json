@@ -1,0 +1,38 @@
+
+{
+    "screens": {
+        "login": {
+            "welcome_aboard": "WELCOME ABOARD",
+            "select_your_vehicle": "SELECT YOUR VEHICLE",
+            "username_placeholder": "Enter your username",
+            "password_placeholder": "Enter your password",
+            "mileage_placeholder": "Enter the vehicle",
+            "button_login": "Login",
+            "button_select": "Select",
+            "error_label_required": "This field is required.",
+            "error_label_all_fields": "Please fill in all fields.",
+            "error_label_failed_login": "Failed to log in. Please check your username and password",
+            "error_label_wrong_mileage": "Mileage is lower than the last one registered. Correct your input or contact the administrator."
+        },
+        "home": {
+            "link_read_voucher": "Read voucher",
+            "logout": "Logout",
+            "no_role": "No Role",
+            "password_placeholder": "Enter your password",
+            "mileage_placeholder": "Enter the vehicle",
+            "button_login": "Login",
+            "button_select": "Select",
+            "error_label_required": "This field is required.",
+            "error_label_all_fields": "Please fill in all fields.",
+            "error_label_failed_login": "Failed to log in. Please check your username and password"
+        },
+        "basket": {
+            "heading": "BASKET",
+            "empty_cart": "Empty Cart",
+            "checkout": "Checkout",
+            "remove": "Remove",
+            "total": "Total",
+            "ticket": "ticket"
+        }
+    }
+}

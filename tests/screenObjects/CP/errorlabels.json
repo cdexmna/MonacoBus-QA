@@ -1,0 +1,51 @@
+
+{
+
+    "login": {
+        "welcome_aboard": "WELCOME ABOARD",
+        "select_your_vehicle": "SELECT YOUR VEHICLE",
+        "username_placeholder": "Enter your username",
+        "password_placeholder": "Enter your password",
+        "mileage_placeholder": "Enter the vehicle",
+        "button_login": "Login",
+        "button_select": "Select",
+        "error_label_username_required": "Username : Username is required",
+        "error_label_password_required": "Password : Password is required",
+        "error_label_failed_login": "Failed to log in. Please check your username and password"
+    },
+    "ticket_categories": {
+        "position_ensure_this_value": "Ensure this value is greater than or equal to 0.",
+        "name_ensure_this_field": "Ensure this field has no more than 100 characters",
+        "name_is_required": "Name : Is required",
+        "position_is_required": "Position : Is required",
+        "password_placeholder": "Enter your password",
+        "mileage_placeholder": "Enter the vehicle",
+        "button_login": "Login",
+        "button_select": "Select",
+        "error_label_required": "This field is required.",
+        "error_label_all_fields": "Please fill in all fields.",
+        "error_label_failed_login": "Failed to log in. Please check your username and password",
+        "overlay_ticket_categorie_success": "Ticket Category created successfully."
+    },
+
+    "transports": {
+        "identifierRequired": "Identifier : Is required",
+        "lastOdometerReadingRequired": "Last odometer reading : Is required",
+        "lastOdometerReading": "Last odometer reading : Ensure this value is greater than or equal to 0.",
+        "statusRequired": "Status : Is required",
+        "transportTypeRequired": "Transport Type : Is required",
+        "maxChars": "This field may not exceed 100 characters.",
+        "minChars": "This field must be at least 3 characters.",
+        "specialChars": "This field may not contain special characters."
+        
+    },
+    "basket": {
+        "heading": "BASKET",
+        "empty_cart": "Empty Cart",
+        "checkout": "Checkout",
+        "remove": "Remove",
+        "total": "Total",
+        "ticket": "ticket"
+    }
+
+}

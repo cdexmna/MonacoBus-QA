@@ -1,0 +1,43 @@
+{
+    "screens": {
+      "home": {
+        "buttons": {
+          "logOut": "Log out",
+          "skipToMainContent": "Skip to main content",
+          "djangoAdministration": "Django administration",
+          "viewSite": "View site",
+          "changePassword": "Change password",
+          "aPIKeyPermissions": "API Key Permissions",
+          "aPIKeys": "API keys",
+          "add": "Add",
+          "change": "Change",
+          "authenticationAndAuthorization": "Authentication and Authorization",
+          "groups": "Groups",
+          "integrations": "Integrations",
+          "tiqetsProductVariants": "Tiqets product variants",
+          "tiqetsProducts": "Tiqets products",
+          "vouchers": "Vouchers",
+          "payments": "Payments",
+          "paymentMethods": "Payment methods",
+          "vatRates": "Vat rates",
+          "periodicTasks": "Periodic tasks",
+          "clocked": "Clocked",
+          "crontabs": "Crontabs",
+          "intervals": "Intervals",
+          "solarEvents": "Solar events",
+          "tickets": "Tickets",
+          "soldTickets": "Sold tickets",
+          "ticketCategories": "Ticket categories",
+          "ticketTypeFavorites": "Ticket type favorites",
+          "ticketTypes": "Ticket types",
+          "transports": "Transports",
+          "depots": "Depots",
+          "itineraries": "Itineraries",
+          "transportStatuses": "Transport Statuses",
+          "transportStops": "Transport stops",
+          "transportTypes": "Transport types",
+          "users": "Users"
+        }
+      }
+    }
+  }

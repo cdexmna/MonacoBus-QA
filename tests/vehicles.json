@@ -1,0 +1,11 @@
+{
+    "GHK567": {
+        "vehicle": "GHK567 - AYATS",
+        "mileage": 2000
+    },
+
+    "ABC123": {
+        "vehicle": "ABC123 - Renault",
+        "mileage": 1000
+    }
+}

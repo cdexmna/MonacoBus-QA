@@ -1,0 +1,88 @@
+{
+  "screens": {
+    "home": {
+      "buttons": {
+        "dashboard": "Dashboard",
+        "transports": "Transports",
+        "ticketCategories": "Ticket categories",
+        "ticketTypes": "Ticket types",
+        "users": "Users",
+        "vouchers": "Vouchers",
+        "sales": "Sales"
+      }
+    },
+    "transports": {
+      "buttons": {
+        
+        "newTransport": "New Transport",
+        "delete": "Delete",
+        "submit": "Submit"
+      },
+      "wrapper": {
+        "newTransport": {
+          "inputs": {
+            "identifier": "identifier",
+            "lastOdometerReading": "lastOdometerReading"
+          },
+          "selects": {
+            "status": "status",
+            "transportType": "transportType"
+          },
+          "textAreas": {},
+          "text": {
+           "createANewTransport": "Create a new transport",
+           "includeANewTransport": "Include a new transport into your fleet"
+          }
+       }
+      }
+    },
+    "ticketCategories": {
+      "buttons": {
+        "newTicketCategory": "New Category",
+        "delete": "Delete",
+        "submit": "Submit"
+      },
+      "wrapper": {
+        "newTicketCategory": {
+          "inputs": {
+            "name": "name",
+            "description": "description",
+            "position": "position"
+          },
+          "selects": {},
+          "textAreas": {},
+          "text": {
+            "createANewTicketCategory": "Create a new Ticket Category",
+            "setANewTicketCategory": "Set a new ticket category to your tickets"
+          }
+        }
+      }
+    },
+    "users": {
+      "buttons": {
+        "newUser": "New User",
+        "delete": "Delete"
+      },
+      "wrapper": {
+        "inputs": {
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "email": "email"
+        },
+        "buttons": {
+            "submit": "Submit"
+        },
+        "messages": {
+            "userCreatedSuccessfully": "User created successfully."
+        },
+        "texts": {
+          "createANewUser": "Create a new user",
+          "enrollANewUser": "Enroll a new user in the system."
+        },
+      "links": {
+          "delete": "Delete"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+    "VOUCHERS": {
+        "GYG": {
+            "1 DAY CHILD": {
+                "label": "GYG 1J ENFANT",
+                "price": "0.00"
+            },
+            "2 DAYS ADULT": {
+                "label": "GYG 2J ADULTE",
+                "price": "0.00"
+            }
+        },
+        "TIQETS": {
+            "1 DAY ADULT": {
+                "label": "TIQETS 1J ADULTE",
+                "price": "0.00"
+            },
+            "1 DAY CHILD": {
+                "label": "TIQETS 1J ENFANT",
+                "price": "0.00"
+            },
+            "2 DAYS ADULT": {
+                "label": "TIQETS 2J ADULTE",
+                "price": "0.00"
+            }
+        }
+    },
+
+    "MONACOLGT": {
+        "PASS": {
+            "1 DAY ADULTS": {
+                "label": "PASS 1J ADULTES",
+                "price": "23.00"
+            },
+            "1 DAY CHILD": {
+                "label": "PASS 1J ENFANT",
+                "price": "8.00"
+            },
+            "1 DAY SENIORS": {
+                "label": "PASS 1J SEN./ETUD.",
+                "price": "21.00"
+            }
+        },
+        "MLGT": {
+            "1 DAY ADULT": {
+                "label": "MLGT WEB 1J ADULTE",
+                "price": "0.00"
+            },
+            "2 DAYS ADULT": {
+                "label": "MLGT WEB 2J ADULTE",
+                "price": "0.00"
+            },
+            "1 DAY CHILD": {
+                "label": "MLGT WEB 1J ENFANT",
+                "price": "0.00"
+            },
+            "1 DAY SENIOR": {
+                "label": "MLGT WEB 1J SENIOR",
+                "price": "0.00"
+            }
+        },
+        "VOUCHER MUSEE": { 
+            "label": "VOUCHER MUSEE",
+            "price": "0.00" 
+        },
+        "PRIVÉ": { 
+            "label": "PRIVÉ",
+            "price": "1.11" 
+        },
+        "DERNIER TOUR": { 
+            "label": "DERNIER TOUR",
+            "price": "13.00" 
+        }
+    },
+
+    "BUS": {
+        "PASS": {
+            "BUS/MUSEUM": {
+                "label": "PASS 1J BUS/MUSÉE",
+                "price": "32.00"
+            },
+            "BUS+PALACE": {
+                "label": "PASS 1J BUS + PALAIS",
+                "price": "32.00"
+            },
+            "TARIF PMR": {
+                "label": "PASS 1J TARIF PMR",
+                "price": "13.00"
+            },
+            "INVITES": {
+                "label": "PASS 1J INVITÉS",
+                "price": "0.00"
+            },
+            "2 DAYS ADULT": {
+                "label": "PASS 2J ADULTE",
+                "price": "40.00"
+            }
+        },
+        "GROUP": {
+            "1 DAY ADULT": {
+                "label": "GROUPE 1J ADULTE",
+                "price": "20.00"
+            },
+            "1 DAY CHILD": {
+                "label": "GROUPE 1J ENFANT",
+                "price": "12.00"
+            },
+            "1 DAY SENIOR": {
+                "label": "GROUPE 1J SENIOR",
+                "price": "18.00"
+            }
+        },
+        "FAMILY": { 
+            "label": "Pass Famille",
+            "price": "40.00" 
+        }
+    }
+}
