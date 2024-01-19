@@ -51,6 +51,7 @@ test.describe('Home page', (page) => {
         await navigationCP.hiAmigo.click();
         await navigationCP.signOut.click();
         await page.waitForSelector('text=Please sign in');
+        await page.waitForTimeout(2000);
     });
     test('should show all UI elements', async ({ page }) => {
         const navigationCP = new NavigationCP(page);

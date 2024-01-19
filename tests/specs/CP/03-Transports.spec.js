@@ -47,11 +47,18 @@ test.describe('Transports page', (page) => {
         await loginScreenCP.inputPassword.fill(testUserCS.password);
         // await page.waitForTimeout(1000);
         await loginScreenCP.inputUsername.click();
-        // await page.waitForTimeout(1000);
+        await page.waitForTimeout(1000);
         await loginScreenCP.btnLogin.click();
         await page.waitForSelector('text=Dashboard');
         await navigationCP.linkTransports.click();
         await page.waitForSelector('text=New Transport');
+    });
+    test.afterEach(async ({ page }) => {
+        const navigationCP = new NavigationCP(page);
+        await navigationCP.hiAmigo.click();
+        await navigationCP.signOut.click();
+        await page.waitForSelector('text=Please sign in');
+        await page.waitForTimeout(2000);
     });
     // test.afterEach(async ({ page}) => {
     //     const navigationCP = new NavigationCP(page);
@@ -94,18 +101,21 @@ test.describe('Transports page', (page) => {
                 test('max characters', async ({ page }) => {
                     const transportsCP = new TransportsCP(page);
                     await transportsCP.inputIdentifier.fill('12345678901234567890123456789012345678901234567890123456789012345678901234567890');
+                    await transportsCP.inputLastOdometerReading.click();
                     await expect(transportsCP.errorLabelMaxChars).toBeVisible({timeout:10000});
                 });
 
                 test('min characters', async ({ page }) => {
                     const transportsCP = new TransportsCP(page);
                     await transportsCP.inputIdentifier.fill('1');
+                    await transportsCP.inputLastOdometerReading.click();
                     await expect(transportsCP.errorLabelMinChars).toBeVisible({timeout:10000});
                 });
 
                 test('special characters', async ({ page }) => {
                     const transportsCP = new TransportsCP(page);
                     await transportsCP.inputIdentifier.fill('!@#$%^&*()');
+                    await transportsCP.inputLastOdometerReading.click();
                     await expect(transportsCP.errorLabelSpecialChars).toBeVisible({timeout:10000});
                 });
             });

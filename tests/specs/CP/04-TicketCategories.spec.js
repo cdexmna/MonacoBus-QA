@@ -39,10 +39,19 @@ test.describe('Ticket Categories page', (page) => {
         await page.goto(pageURL);
         await loginScreenCP.inputUsername.fill(testUserCS.username);
         await loginScreenCP.inputPassword.fill(testUserCS.password);
+        await page.waitForTimeout(1000);
         await loginScreenCP.btnLogin.click();
         await page.waitForSelector('text=Dashboard');
         await navigationCP.linkTicketCategories.click();
         await page.waitForSelector('text=New Category');
+    });
+
+    test.afterEach(async ({ page }) => {
+        const navigationCP = new NavigationCP(page);
+        await navigationCP.hiAmigo.click();
+        await navigationCP.signOut.click();
+        await page.waitForSelector('text=Please sign in');
+        await page.waitForTimeout(2000);
     });
     test('should show all UI elements', async ({ page }) => {
         const ticketCategoriesCP = new TicketCategoriesCP(page);
@@ -74,6 +83,7 @@ test.describe('Ticket Categories page', (page) => {
         await ticketCategoriesCP.btnSubmit.click();
         await expect(ticketCategoriesCP.errorLabelName).toBeVisible();
         await ticketCategoriesCP.inputName.fill('Test Name');
+        await expect(ticketCategoriesCP.errorLabelName).not.toBeVisible();
     })
 
     test('should create a new ticket category', async ({ page }) => {
