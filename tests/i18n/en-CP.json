@@ -16,13 +16,14 @@
         
         "newTransport": "New Transport",
         "delete": "Delete",
-        "submit": "Submit"
+        "submit": "Create Transport"
       },
       "wrapper": {
         "newTransport": {
           "inputs": {
             "identifier": "identifier",
-            "lastOdometerReading": "lastOdometerReading"
+            "lastOdometerReading": "lastOdometerReading",
+            "manufacturer": "manufacturer"
           },
           "selects": {
             "status": "status",
@@ -40,7 +41,7 @@
       "buttons": {
         "newTicketCategory": "New Category",
         "delete": "Delete",
-        "submit": "Submit"
+        "submit": "Create Ticket Category"
       },
       "wrapper": {
         "newTicketCategory": {
@@ -70,18 +71,18 @@
             "email": "email"
         },
         "buttons": {
-            "submit": "Submit"
+            "submit": "Create User"
         },
         "messages": {
             "userCreatedSuccessfully": "User created successfully."
         },
         "texts": {
-          "createANewUser": "Create a new user",
+          "createANewUser": "Create a new User",
           "enrollANewUser": "Enroll a new user in the system."
-        },
-      "links": {
-          "delete": "Delete"
         }
+      },
+      "links": {
+        "delete": "Delete"
       }
     }
   }

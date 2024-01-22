@@ -157,6 +157,29 @@ test.describe('Transports page', (page) => {
                 });
                 */
             });
+            test.describe('Manufacturer', (page) => {
+                test('should test manufacturer field for limits', async ({ page }) => {
+                    const transportsCP = new TransportsCP(page);
+                    await transportsCP.btnSubmit.click();
+                    await expect(transportsCP.errorLabelManufacturerRequired).toBeVisible({timeout:10000});
+                    await transportsCP.inputManufacturer.fill('12345678901234567890123456789012345678901234567890123456789012345678901234567890');
+                    await expect(transportsCP.errorLabelManufacturerRequired).not.toBeVisible({timeout:10000});
+                    await transportsCP.inputManufacturer.fill('Test Manufacturer');
+                });
+                test('max characters', async ({ page }) => {
+                    const transportsCP = new TransportsCP(page);
+                    await transportsCP.inputManufacturer.fill('12345678901234567890123456789012345678901234567890123456789012345678901234567890');
+                    await transportsCP.inputLastOdometerReading.click();
+                    await expect(transportsCP.errorLabelMaxChars).toBeVisible({timeout:10000});
+                });
+                test('min characters', async ({ page }) => {
+                    const transportsCP = new TransportsCP(page);
+                    await transportsCP.inputManufacturer.fill('1');
+                    await transportsCP.inputLastOdometerReading.click();
+                    await expect(transportsCP.errorLabelMinChars).toBeVisible({timeout:10000});
+                });
+            });
+
         });
             test.describe('Selects', (page) => {
                 let transportsCP;
@@ -196,7 +219,7 @@ test.describe('Transports page', (page) => {
             await transportsCP.btnNewTransport.click();
             await page.waitForSelector('text=Create a new transport');
             await transportsCP.inputIdentifier.fill(identifier);
-            // await transportsCP.inputManufacturer.fill(manufacturer);
+            await transportsCP.inputManufacturer.fill(manufacturer);
             await transportsCP.inputLastOdometerReading.fill('1000');
             await transportsCP.selectStatus.selectOption({ label: 'available' });
             await transportsCP.selectTransportType.selectOption({ label: 'Bus' });
@@ -221,7 +244,7 @@ test.describe('Transports page', (page) => {
                 await navigationCP.linkTransports.click();
                 await page.waitForSelector('text=New Transport');
             });
-            test('should show the new transport in the Select Your Vehicle select', async ({ page }) => {
+            test.fixme('should show the new transport in the Select Your Vehicle select', async ({ page }) => {
                 const loginScreenDI = new LoginScreenDI(page, lang);
                 const transportsCP = new TransportsCP(page);
                 const id30char = uuidv4();

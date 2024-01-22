@@ -75,14 +75,14 @@ test.describe('Users page', (page) => {
         test('should create a new user', async ({ page }) => {
             const usersCP = new UsersCP(page);
             const id30char = uuidv4();
-            const username = id30char.substring(0, 20);
+            const username = id30char.substring(0, 20)+'username';
             await page.waitForSelector('text=New User');
             await usersCP.btnNewUser.click();
             await page.waitForSelector('text=Create a new User');
             await usersCP.inputUserName.fill(username);
             await usersCP.inputFirstName.fill('Test');
             await usersCP.inputLastName.fill('User');
-            await usersCP.inputEmail.fill('email@email.com');
+            await usersCP.inputEmail.fill(id30char+'@email.com');
             await usersCP.btnSubmit.click();
             await expect(usersCP.overlayCreatedSuccessfully).toBeVisible({timeout: 10000});
             await page.waitForSelector('text=New User');

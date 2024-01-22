@@ -33,6 +33,10 @@ class TransportsScreen {
     get inputIdentifier() {
         return (this.page.locator(`input[name="${this.strings.wrapper.newTransport.inputs.identifier}"]`));
     }
+
+    get inputManufacturer() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.newTransport.inputs.manufacturer}"]`));
+    }
     
     get inputLastOdometerReading() {
         return (this.page.locator(`input[name="${this.strings.wrapper.newTransport.inputs.lastOdometerReading}"]`));
@@ -65,11 +69,11 @@ class TransportsScreen {
     }
 
     get errorLabelStatusRequired() {
-        return (this.page.getByLabel(`${this.errorLabels.transports.statusRequired}`));
+        return (this.page.locator(`div[title="${this.errorLabels.transports.isRequired}"]`).locator(`select[name="${this.strings.wrapper.newTransport.selects.status}"]`));;
     }
 
     get errorLabelTransportTypeRequired() {
-        return (this.page.getByLabel(`${this.errorLabels.transports.transportTypeRequired}`));
+        return (this.page.locator(`div[title="${this.errorLabels.transports.isRequired}"]`).locator(`select[name="${this.strings.wrapper.newTransport.selects.transportType}"]`));;
     }
 
     get errorLabelMaxChars() {
@@ -84,13 +88,26 @@ class TransportsScreen {
         return (this.page.getByLabel(`${this.errorLabels.transports.specialChars}`));
     }
 
-    // get errorLabelLastOdometerReadingRequired() {
-    //     return (this.page.getByText(this.errorLabels.transports.lastOdometerReadingRequired));
-    // }
+    get errorLabelLastOdometerReadingRequired() {
+        return (this.page.getByText(this.errorLabels.transports.lastOdometerReadingRequired));
+    }
 
-    // get errorLabelLastOdometerReading() {
-    //     return (this.page.getByText(this.errorLabels.transports.lastOdometerReading));
-    // }
+    get errorLabelLastOdometerReading() {
+        return (this.page.getByText(this.errorLabels.transports.lastOdometerReading));
+    }
+
+    get errorLabelManufacturerRequired() {
+        // return (this.page.getByText(this.errorLabels.transports.manufacturerRequired));
+        return (this.page.locator(`div[title="${this.errorLabels.transports.isRequired}"]`).locator('select[name="manufacturer"]'));
+    }
+
+    get errorLabelManufacturerMaxChars() {
+        return (this.page.getByText(this.errorLabels.transports.manufacturerMaxChars));
+    }
+
+    get errorLabelManufacturerMinChars() {
+        return (this.page.getByText(this.errorLabels.transports.manufacturerMinChars));
+    }
 }
 
 module.exports = TransportsScreen;
