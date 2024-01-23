@@ -1,18 +1,18 @@
 import { test, expect, chromium } from '@playwright/test';
 import { v4 as uuidv4 } from 'uuid';
-import {loginCS} from '../../helper/CS/functions.js';
-import {DimiDI} from '../../credentials-DI.json';
-import {DimiCS} from '../../credentials-CS.json';
+import {loginCS} from '../../../helper/CS/functions.js';
+import {DimiDI} from '../../../credentials-DI.json';
+import {DimiCS} from '../../../credentials-CS.json';
 const fs = require("fs");
 // import TransportsCP from '../../screenObjects/CP/Transports.screen.js';
 
-const LoginScreenCP = require('../../screenObjects/CP/login.screen.js');
-const LoginScreenDI = require('../../screenObjects/English/DI/login.screen.js');
-const NavigationCP = require('../../screenObjects/CP/navigation.wrapper.js');
-const TransportsCP = require('../../screenObjects/CP/Transports.screen.js');
-const TicketCategoriesCP = require('../../screenObjects/CP/TicketCategories.screen.js');
-const UsersCP = require('../../screenObjects/CP/Users.screen.js');
-const HomeScreenDI = require('../../screenObjects/English/DI/home.screen.js');
+const LoginScreenCP = require('../../../screenObjects/CP/login.screen.js');
+const LoginScreenDI = require('../../../screenObjects/English/DI/login.screen.js');
+const NavigationCP = require('../../../screenObjects/CP/navigation.wrapper.js');
+const TransportsCP = require('../../../screenObjects/CP/Transports.screen.js');
+const TicketCategoriesCP = require('../../../screenObjects/CP/TicketCategories.screen.js');
+const UsersCP = require('../../../screenObjects/CP/Users.screen.js');
+const HomeScreenDI = require('../../../screenObjects/English/DI/home.screen.js');
 
 const testUserDI = DimiDI;
 const testUserCS = DimiCS;
@@ -75,14 +75,14 @@ test.describe('Users page', (page) => {
         test('should create a new user', async ({ page }) => {
             const usersCP = new UsersCP(page);
             const id30char = uuidv4();
-            const username = id30char.substring(0, 20);
+            const username = id30char.substring(0, 20)+'username';
             await page.waitForSelector('text=New User');
             await usersCP.btnNewUser.click();
             await page.waitForSelector('text=Create a new User');
             await usersCP.inputUserName.fill(username);
             await usersCP.inputFirstName.fill('Test');
             await usersCP.inputLastName.fill('User');
-            await usersCP.inputEmail.fill('email@email.com');
+            await usersCP.inputEmail.fill(id30char+'@email.com');
             await usersCP.btnSubmit.click();
             await expect(usersCP.overlayCreatedSuccessfully).toBeVisible({timeout: 10000});
             await page.waitForSelector('text=New User');

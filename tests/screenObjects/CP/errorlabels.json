@@ -32,12 +32,32 @@
         "identifierRequired": "Identifier : Is required",
         "lastOdometerReadingRequired": "Last odometer reading : Is required",
         "lastOdometerReading": "Last odometer reading : Ensure this value is greater than or equal to 0.",
+        "manufacturerRequired": "Manufacturer : Is required",
+        "manufacturerMaxChars": "Manufacturer : Ensure this field has no more than 100 characters.",
+        "manufacturerMinChars": "Manufacturer : Ensure this field has at least 3 characters.",
+        "isRequired": "Is required",
         "statusRequired": "Status : Is required",
-        "transportTypeRequired": "Transport Type : Is required",
+        "transportTypeRequired": "Transport type : Is required",
         "maxChars": "This field may not exceed 100 characters.",
         "minChars": "This field must be at least 3 characters.",
         "specialChars": "This field may not contain special characters."
-        
+    },
+
+    "users": {
+        "usernameRequired": "Username : Is required",
+        "usernameMaxChars": "Username : Ensure this field has no more than 100 characters.",
+        "usernameMinChars": "Username : Ensure this field has at least 3 characters.",
+        "usernameSpecialChars": "Username : Ensure this field has no special characters.",
+        "firstNameRequired": "First name : Is required",
+        "firstNameMaxChars": "First name : Ensure this field has no more than 100 characters.",
+        "firstNameMinChars": "First name : Ensure this field has at least 3 characters.",
+        "firstNameSpecialChars": "First name : Ensure this field has no special characters.",
+        "lastNameRequired": "Last name : Is required",
+        "lastNameMaxChars": "Last name : Ensure this field has no more than 100 characters.",
+        "lastNameMinChars": "Last name : Ensure this field has at least 3 characters.",
+        "lastNameSpecialChars": "Last name : Ensure this field has no special characters.",
+        "emailRequired": "Email : Is required",
+        "emailExisting": "Email : user with this mail already exists."
     },
     "basket": {
         "heading": "BASKET",
