@@ -1,0 +1,26 @@
+{
+    "General": {
+        "error": "Error",
+        "newTransport": "New Transport"
+    },
+    "errors": {},
+    "externalAccount": {},
+    "ValidationMessages": {},
+    "SignInScreen": {
+        "biometricLogin": "Biometric login",
+        "pleaseSignIn": "Please sign in",
+        "header": "Welcome back!",
+        "usernameText": "Username",
+        "passwordText": "Password",
+        "rememberUsernameText": "Remember Username",
+        "forgotPasswordText": "Forgot your password?",
+        "signInTitlePinkButton": "Sign In",
+        "appErrorAlertTitle": "Error",
+        "signInErrorAlertTitle": "Sign In Error",
+        "messageSignInErrorAlert": "Invalid server response",
+        "invalidCredentialsText": "Invalid username/password",
+        "googleLoginText": "Sign in with Google"
+    },
+    "ServiceAgreementScreen": {},
+    "PreferencesScreen": {}
+}

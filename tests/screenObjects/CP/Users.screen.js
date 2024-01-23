@@ -12,19 +12,19 @@ class UsersCP {
     }
 
     get textCreateANewUser() {
-        return (this.page.getByText(this.strings.texts.createANewUser));
+        return (this.page.getByText(this.strings.wrapper.texts.createANewUser));
     }
 
     get btnBack() {
-        return (this.page.locator(`div:has-text("${this.strings.texts.createANewUser}")`).getByRole('link'));
+        return (this.page.locator('div').filter({ hasText: /^Create a new User$/ }).getByRole('link'));
     }
 
     get textEnrollANewUser() {
-        return (this.page.getByText(this.strings.texts.enrollANewUser));
+        return (this.page.getByText(this.strings.wrapper.texts.enrollANewUser));
     }
 
     get messageUserCreatedSuccessfully() {
-        return (this.page.getByText(this.strings.messages.userCreatedSuccessfully));
+        return (this.page.getByText(this.strings.wrapper.messages.userCreatedSuccessfully));
     }
 
     get inputUserName() {
@@ -32,23 +32,23 @@ class UsersCP {
     }
 
     get inputFirstName() {
-        return (this.page.locator(`input[name="${this.strings.inputs.firstName}"]`));
+        return (this.page.locator(`input[name="${this.strings.wrapper.inputs.firstName}"]`));
     }
 
     get inputLastName() {
-        return (this.page.locator(`input[name="${this.strings.inputs.lastName}"]`));
+        return (this.page.locator(`input[name="${this.strings.wrapper.inputs.lastName}"]`));
     }
 
     get inputEmail() {
-        return (this.page.locator(`input[name="${this.strings.inputs.email}"]`));
+        return (this.page.locator(`input[name="${this.strings.wrapper.inputs.email}"]`));
     }
 
     get btnSubmit() {
-        return (this.page.locator(`button:has-text("${this.strings.buttons.submit}")`));
+        return (this.page.locator(`button:has-text("${this.strings.wrapper.buttons.submit}")`));
     }
 
     get overlayCreatedSuccessfully() {
-        return (this.page.locator(`div:has-text("${this.strings.messages.userCreatedSuccessfully}")`).last());
+        return (this.page.locator(`div:has-text("${this.strings.wrapper.messages.userCreatedSuccessfully}")`).last());
     }
 
     get linkDelete() {

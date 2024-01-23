@@ -1,3 +1,4 @@
+const { throws } = require('assert');
 const fs = require('fs');
 class TransportsScreen {
     constructor(page, locale) {
@@ -33,6 +34,10 @@ class TransportsScreen {
     get inputIdentifier() {
         return (this.page.locator(`input[name="${this.strings.wrapper.newTransport.inputs.identifier}"]`));
     }
+
+    get inputManufacturer() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.newTransport.inputs.manufacturer}"]`));
+    }
     
     get inputLastOdometerReading() {
         return (this.page.locator(`input[name="${this.strings.wrapper.newTransport.inputs.lastOdometerReading}"]`));
@@ -65,11 +70,11 @@ class TransportsScreen {
     }
 
     get errorLabelStatusRequired() {
-        return (this.page.getByLabel(`${this.errorLabels.transports.statusRequired}`));
+        return (this.page.locator(`div[title="${this.errorLabels.transports.isRequired}"]`).locator(`select[name="${this.strings.wrapper.newTransport.selects.status}"]`));;
     }
 
     get errorLabelTransportTypeRequired() {
-        return (this.page.getByLabel(`${this.errorLabels.transports.transportTypeRequired}`));
+        return (this.page.locator(`div[title="${this.errorLabels.transports.isRequired}"]`).locator(`select[name="${this.strings.wrapper.newTransport.selects.transportType}"]`));;
     }
 
     get errorLabelMaxChars() {
@@ -84,13 +89,88 @@ class TransportsScreen {
         return (this.page.getByLabel(`${this.errorLabels.transports.specialChars}`));
     }
 
-    // get errorLabelLastOdometerReadingRequired() {
-    //     return (this.page.getByText(this.errorLabels.transports.lastOdometerReadingRequired));
-    // }
+    get errorLabelLastOdometerReadingRequired() {
+        return (this.page.getByText(this.errorLabels.transports.lastOdometerReadingRequired));
+    }
 
-    // get errorLabelLastOdometerReading() {
-    //     return (this.page.getByText(this.errorLabels.transports.lastOdometerReading));
-    // }
+    get errorLabelLastOdometerReading() {
+        return (this.page.getByText(this.errorLabels.transports.lastOdometerReading));
+    }
+
+    get errorLabelManufacturerRequired() {
+        // return (this.page.getByText(this.errorLabels.transports.manufacturerRequired));
+        return (this.page.locator(`div[title="${this.errorLabels.transports.isRequired}"]`).locator('select[name="manufacturer"]'));
+    }
+
+    get errorLabelManufacturerMaxChars() {
+        return (this.page.getByText(this.errorLabels.transports.manufacturerMaxChars));
+    }
+
+    get errorLabelManufacturerMinChars() {
+        return (this.page.getByText(this.errorLabels.transports.manufacturerMinChars));
+    }
+
+
+   get editTransportHeading() {
+        return (this.page.locator(`p:text-is("${this.strings.wrapper.editTransport.text.editTransport}")`));
+    }
+
+    get editTransportIdentifier() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.editTransport.inputs.identifier}"]`));
+    }
+
+    get editTransportManufacturer() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.editTransport.inputs.manufacturer}"]`));
+    }
+
+    get editTransportLastOdometerReading() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.editTransport.inputs.lastOdometerReading}"]`));
+    }
+
+    get editTransportStatus() {
+        return (this.page.locator(`select[name="${this.strings.wrapper.editTransport.selects.status}"]`));
+    }
+
+    get editTransportTransportType() {
+        return (this.page.locator(`select[name="${this.strings.wrapper.editTransport.selects.transportType}"]`));
+    }
+
+    get editTransportUpdateTransport() {
+        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTransport.buttons.updateTransport}")`));
+    }
+
+    get overlayUpdatedSuccessfully() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTransport.messages.transportUpdatedSuccessfully}")`);
+    }
+
+    get editTransportDeleteTransport() {
+        return (this.page.locator('#root').locator(`button:text-is("${this.strings.wrapper.editTransport.buttons.deleteTransport}")`));
+    }
+
+    get editTransportDeleteTransportHeading()  {
+        return (this.page.locator(`p:text-is("${this.strings.wrapper.editTransport.text.deleteTransport}")`));
+    }
+
+    get editTransportDeleteTransportAlertTitle() {
+        return (this.page.getByText(`${this.strings.wrapper.editTransport.alerts.deleteTransportTitle}`));
+    }
+
+    get editTransportDeleteTransportAlertMessage() {
+        return (this.page.getByText(`${this.strings.wrapper.editTransport.alerts.deleteTransportMessage}`));
+    }
+
+    get editTransportDeleteTransportGoBack() {
+        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTransport.buttons.goBack}")`));
+    }
+
+    get overlayDeleteTransport() {
+        return (this.page.getByRole('dialog').locator(`button:text-is("${this.strings.wrapper.editTransport.buttons.deleteTransport}")`));
+    }
+
+    get overlayDeletedSuccessfully() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTransport.messages.transportDeletedSuccessfully}")`);
+    }
+
 }
 
 module.exports = TransportsScreen;
