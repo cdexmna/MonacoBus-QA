@@ -102,7 +102,37 @@
             "createANewTicketCategory": "Create a new Ticket Category",
             "setANewTicketCategory": "Set a new ticket category to your tickets"
           }
-        }
+        },
+        "editTicketCategory": {
+          "inputs": {
+            "identifier": "identifier",
+            "description": "description"
+          },
+          "selects": {
+            "status": "status",
+            "TicketCategoryType": "TicketCategoryType"
+          },
+          "textAreas": {},
+          "text": {
+           "editTicketCategory": "Edit Ticket Category",
+           "editTicketCategoryDescription": "information.",
+           "deleteTicketCategory": "Delete Ticket Category"
+          },
+          "buttons": {
+            "updateTicketCategory": "Update Ticket Category",
+            "deleteTicketCategory": "Delete Ticket Category",
+            "goBack": "Go back"
+          },
+          "messages": {
+            "ticketCategoryUpdatedSuccessfully": "Ticket Category updated successfully.",
+            "ticketCategoryDeletedSuccessfully": "Ticket Category deleted successfully."
+          },
+          "alerts": {
+            "deleteTicketCategoryTitle": "Are you sure?",
+            "deleteTicketCategoryMessage": "This action cannot be undone. This will permanently delete",
+            "deleteTicketCategoryElements": "These elements will be deleted:"
+          }
+       }
       }
     },
     "users": {
