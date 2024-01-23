@@ -1,5 +1,20 @@
 {
   "screens": {
+    "login": {
+      "biometricLogin": "Biometric login",
+      "pleaseSignIn": "Please sign in",
+      "header": "Welcome back!",
+      "usernameText": "Username",
+      "passwordText": "Password",
+      "rememberUsernameText": "Remember Username",
+      "forgotPasswordText": "Forgot your password?",
+      "signInTitlePinkButton": "Sign In",
+      "appErrorAlertTitle": "Error",
+      "signInErrorAlertTitle": "Sign In Error",
+      "messageSignInErrorAlert": "Invalid server response",
+      "invalidCredentialsText": "Invalid username/password",
+      "googleLoginText": "Sign in with Google"
+    },
     "home": {
       "buttons": {
         "dashboard": "Dashboard",
@@ -33,6 +48,37 @@
           "text": {
            "createANewTransport": "Create a new transport",
            "includeANewTransport": "Include a new transport into your fleet"
+          }
+       },
+       "editTransport": {
+          "inputs": {
+            "identifier": "identifier",
+            "lastOdometerReading": "lastOdometerReading",
+            "manufacturer": "manufacturer"
+          },
+          "selects": {
+            "status": "status",
+            "transportType": "transportType"
+          },
+          "textAreas": {},
+          "text": {
+           "editTransport": "Edit Transport",
+           "editTransportDescription": "information.",
+           "deleteTransport": "Delete Transport"
+          },
+          "buttons": {
+            "updateTransport": "Update Transport",
+            "deleteTransport": "Delete Transport",
+            "goBack": "Go back"
+          },
+          "messages": {
+            "transportUpdatedSuccessfully": "Transport updated successfully.",
+            "transportDeletedSuccessfully": "Transport deleted successfully."
+          },
+          "alerts": {
+            "deleteTransportTitle": "Are you sure?",
+            "deleteTransportMessage": "This action cannot be undone. This will permanently delete",
+            "deleteTransportElements": "These elements will be deleted:"
           }
        }
       }
