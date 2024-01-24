@@ -177,6 +177,34 @@ test.describe('Transports page', (page) => {
             });
 
         });
+
+        test('Identifier field uniqueness constraint', async ({ page }) => {
+            const transportsCP = new TransportsCP(page);
+            await transportsCP.btnNewTransport.click();
+            await transportsCP.inputIdentifier.fill(identifier);
+            await transportsCP.inputLastOdometerReading.fill('1000');
+            await transportsCP.selectStatus.selectOption({ label: 'available' });
+            await transportsCP.selectTransportType.selectOption({ label: 'Bus' });
+            await transportsCP.btnSubmit.click();
+            await page.waitForSelector('text=New Transport');
+            await expect(page.locator('text=' + identifier)).toBeVisible();
+            await transportsCP.btnNewTransport.click();
+            await transportsCP.inputIdentifier.fill(identifier);
+            await transportsCP.inputLastOdometerReading.fill('1000');
+            await transportsCP.selectStatus.selectOption({ label: 'available' });
+            await transportsCP.selectTransportType.selectOption({ label: 'Bus' });
+            await transportsCP.btnSubmit.click();
+            await expect(transportsCP.overlayCreateError).toBeVisible({timeout: 10000});
+            await expect(transportsCP.errorLabelIdentifierAlreadyExist).toBeVisible();
+            await page.waitForSelector('text=New Transport');
+            await page.getByText(identifier).first().click();
+            await page.waitForSelector('text=Edit Transport');
+            await transportsCP.editTransportDeleteTransport.click();
+            await page.waitForSelector('text=Are you sure?');
+            await transportsCP.overlayDeleteTransport.click();
+            await page.waitForSelector('text=New Transport');
+        });
+
         test.describe('Selects', (page) => {
             let transportsCP;
         
@@ -314,6 +342,19 @@ test.describe('Transports page', (page) => {
                 await expect(transportsCP.editTransportDeleteTransportHeading).toBeVisible();
                 await expect(transportsCP.editTransportDeleteTransport).toBeVisible();
             });
+        });
+        test('Identifier field uniqueness constraint', async ({ page }) => {
+            const transportsCP = new TransportsCP(page);
+            const navigationCP = new NavigationCP(page);
+            await navigationCP.linkTransports.click();
+            await page.waitForSelector('text=New Transport');
+
+            await page.getByText(identifierEdit).first().click();
+            await page.waitForSelector('text=Edit Transport');
+            await transportsCP.editTransportIdentifier.fill('alreadyExist');
+            await transportsCP.editTransportUpdateTransport.click();
+            await expect(transportsCP.errorLabelIdentifierAlreadyExist).toBeVisible({timeout: 10000});
+            await expect(transportsCP.overlayUpdateError).toBeVisible({timeout: 10000});
         });
         test.describe('Function', (page) => {
             test('should update the transport - all fields', async ({ page }) => {

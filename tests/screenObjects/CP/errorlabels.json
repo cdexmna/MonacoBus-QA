@@ -17,6 +17,7 @@
         "position_ensure_this_value": "Ensure this value is greater than or equal to 0.",
         "name_ensure_this_field": "Ensure this field has no more than 100 characters",
         "name_is_required": "Name : Is required",
+        "name_already_exist": "ticket category with this name already exists.",
         "position_is_required": "Position : Is required",
         "password_placeholder": "Enter your password",
         "mileage_placeholder": "Enter the vehicle",
@@ -25,11 +26,13 @@
         "error_label_required": "This field is required.",
         "error_label_all_fields": "Please fill in all fields.",
         "error_label_failed_login": "Failed to log in. Please check your username and password",
-        "overlay_ticket_categorie_success": "Ticket Category created successfully."
+        "overlay_ticket_categorie_success": "Ticket Category created successfully.",
+        "overlay_ticket_category_update_error": "Couldn't update ticket category."
     },
 
     "transports": {
         "identifierRequired": "Identifier : Is required",
+        "identifier_already_exist": "transport with this identifier already exists.",
         "lastOdometerReadingRequired": "Last odometer reading : Is required",
         "lastOdometerReading": "Last odometer reading : Ensure this value is greater than or equal to 0.",
         "manufacturerRequired": "Manufacturer : Is required",

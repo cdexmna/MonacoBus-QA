@@ -73,7 +73,10 @@
           },
           "messages": {
             "transportUpdatedSuccessfully": "Transport updated successfully.",
-            "transportDeletedSuccessfully": "Transport deleted successfully."
+            "transportUpdatedError": "Couldn't update transport.",
+            "transportDeletedSuccessfully": "Transport deleted successfully.",
+            "transportCreateError": "Couldn't create transport.",
+            "transportDeleteError": "Couldn't delete transport."
           },
           "alerts": {
             "deleteTransportTitle": "Are you sure?",
@@ -126,7 +129,10 @@
           },
           "messages": {
             "ticketCategoryUpdatedSuccessfully": "Ticket Category updated successfully.",
-            "ticketCategoryDeletedSuccessfully": "Ticket Category deleted successfully."
+            "ticketCategoryUpdatedError": "Couldn't update ticket category.",
+            "ticketCategoryCreateError": "Couldn't create ticket category.",
+            "ticketCategoryDeletedSuccessfully": "Ticket Category deleted successfully.",
+            "ticketCategoryDeletedError": "Couldn't delete ticket category."
           },
           "alerts": {
             "deleteTicketCategoryTitle": "Are you sure?",

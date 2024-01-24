@@ -71,6 +71,10 @@ class TicketCategoriesCP {
         return (this.page.locator(`input[name="${this.strings.wrapper.editTicketCategory.inputs.name}"]`));
     }
 
+    get errorLabelNameAlreadyExist() {
+        return (this.page.getByText(this.errorLabels.ticket_categories.name_already_exist));
+    }
+
     get editTicketCategoryDescription() {
         return (this.page.locator(`input[name="${this.strings.wrapper.editTicketCategory.inputs.description}"]`));
     }
@@ -114,6 +118,20 @@ class TicketCategoriesCP {
     get overlayDeletedSuccessfully() {
         return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryDeletedSuccessfully}")`);
     }
+
+    get overlayCreateError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryCreateError}")`);
+    }
+
+    get overlayUpdateError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryUpdatedError}")`);
+    }
+
+    get overlayDeleteError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryDeletedError}")`);
+    }
+
+
 }
 
 module.exports = TicketCategoriesCP
