@@ -61,6 +61,10 @@ class TransportsScreen {
         return (this.page.getByLabel(`${this.errorLabels.transports.identifierRequired}`));
     }
 
+    get errorLabelIdentifierAlreadyExist() {
+        return (this.page.getByText(this.errorLabels.transports.identifier_already_exist));
+    }
+
     get errorLabelLastOdometerReadingRequired() {
         return (this.page.getByLabel(`${this.errorLabels.transports.lastOdometerReadingRequired}`));
     }
@@ -141,6 +145,17 @@ class TransportsScreen {
 
     get overlayUpdatedSuccessfully() {
         return this.page.locator(`:text("${this.strings.wrapper.editTransport.messages.transportUpdatedSuccessfully}")`);
+    }
+    get overlayCreateError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTransport.messages.transportCreateError}")`);
+    }
+
+    get overlayUpdateError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTransport.messages.transportUpdatedError}")`);
+    }
+
+    get overlayDeleteError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTransport.messages.transportDeleteError}")`);
     }
 
     get editTransportDeleteTransport() {

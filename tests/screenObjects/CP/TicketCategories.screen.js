@@ -7,6 +7,10 @@ class TicketCategoriesCP {
         this.strings = require('../../i18n/en-CP.json').screens.ticketCategories;
     }
 
+    get btnNewCategory() {
+        return (this.page.locator(`button:text-is("${this.strings.buttons.newTicketCategory}")`));
+      }
+
     get errorLabelPosition() {
         return (this.page.getByText(this.errorLabels.ticket_categories.position_ensure_this_value).first());
     }
@@ -57,6 +61,77 @@ class TicketCategoriesCP {
     get btnBack() {
         return (this.page.locator('div').filter({ hasText: /^Create a new Ticket Category$/ }).getByRole('link'));
     }
+
+    
+    get editTicketCategoryHeading() {
+        return (this.page.locator(`p:text-is("${this.strings.wrapper.editTicketCategory.text.editTicketCategory}")`));
+    }
+
+    get editTicketCategoryName() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.editTicketCategory.inputs.name}"]`));
+    }
+
+    get errorLabelNameAlreadyExist() {
+        return (this.page.getByText(this.errorLabels.ticket_categories.name_already_exist));
+    }
+
+    get editTicketCategoryDescription() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.editTicketCategory.inputs.description}"]`));
+    }
+
+    get editTicketCategoryPosition() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.editTicketCategory.inputs.position}"]`));
+    }
+
+    get editTicketCategoryUpdateTicketCategory() {
+        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTicketCategory.buttons.updateTicketCategory}")`));
+    }
+
+    get overlayUpdatedSuccessfully() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryUpdatedSuccessfully}")`);
+    }
+
+    get editTicketCategoryDeleteTicketCategory() {
+        return (this.page.locator('#root').locator(`button:text-is("${this.strings.wrapper.editTicketCategory.buttons.deleteTicketCategory}")`));
+    }
+
+    get editTicketCategoryDeleteTicketCategoryHeading()  {
+        return (this.page.locator(`p:text-is("${this.strings.wrapper.editTicketCategory.text.deleteTicketCategory}")`));
+    }
+
+    get editTicketCategoryDeleteTicketCategoryAlertTitle() {
+        return (this.page.getByText(`${this.strings.wrapper.editTicketCategory.alerts.deleteTicketCategoryTitle}`));
+    }
+
+    get editTicketCategoryDeleteTicketCategoryAlertMessage() {
+        return (this.page.getByText(`${this.strings.wrapper.editTicketCategory.alerts.deleteTicketCategoryMessage}`));
+    }
+
+    get editTicketCategoryDeleteTicketCategoryGoBack() {
+        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTicketCategory.buttons.goBack}")`));
+    }
+
+    get overlayDeleteTicketCategory() {
+        return (this.page.getByRole('dialog').locator(`button:text-is("${this.strings.wrapper.editTicketCategory.buttons.deleteTicketCategory}")`));
+    }
+
+    get overlayDeletedSuccessfully() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryDeletedSuccessfully}")`);
+    }
+
+    get overlayCreateError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryCreateError}")`);
+    }
+
+    get overlayUpdateError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryUpdatedError}")`);
+    }
+
+    get overlayDeleteError() {
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketCategory.messages.ticketCategoryDeletedError}")`);
+    }
+
+
 }
 
 module.exports = TicketCategoriesCP
