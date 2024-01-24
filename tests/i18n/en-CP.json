@@ -73,7 +73,10 @@
           },
           "messages": {
             "transportUpdatedSuccessfully": "Transport updated successfully.",
-            "transportDeletedSuccessfully": "Transport deleted successfully."
+            "transportUpdatedError": "Couldn't update transport.",
+            "transportDeletedSuccessfully": "Transport deleted successfully.",
+            "transportCreateError": "Couldn't create transport.",
+            "transportDeleteError": "Couldn't delete transport."
           },
           "alerts": {
             "deleteTransportTitle": "Are you sure?",
@@ -102,7 +105,41 @@
             "createANewTicketCategory": "Create a new Ticket Category",
             "setANewTicketCategory": "Set a new ticket category to your tickets"
           }
-        }
+        },
+        "editTicketCategory": {
+          "inputs": {
+            "name": "name",
+            "description": "description",
+            "position": "position"
+          },
+          "selects": {
+            "status": "status",
+            "TicketCategoryType": "TicketCategoryType"
+          },
+          "textAreas": {},
+          "text": {
+           "editTicketCategory": "Edit Ticket Category",
+           "editTicketCategoryDescription": "information.",
+           "deleteTicketCategory": "Delete Ticket Category"
+          },
+          "buttons": {
+            "updateTicketCategory": "Update Ticket Category",
+            "deleteTicketCategory": "Delete Ticket Category",
+            "goBack": "Go back"
+          },
+          "messages": {
+            "ticketCategoryUpdatedSuccessfully": "Ticket Category updated successfully.",
+            "ticketCategoryUpdatedError": "Couldn't update ticket category.",
+            "ticketCategoryCreateError": "Couldn't create ticket category.",
+            "ticketCategoryDeletedSuccessfully": "Ticket Category deleted successfully.",
+            "ticketCategoryDeletedError": "Couldn't delete ticket category."
+          },
+          "alerts": {
+            "deleteTicketCategoryTitle": "Are you sure?",
+            "deleteTicketCategoryMessage": "This action cannot be undone. This will permanently delete",
+            "deleteTicketCategoryElements": "These elements will be deleted:"
+          }
+       }
       }
     },
     "users": {
