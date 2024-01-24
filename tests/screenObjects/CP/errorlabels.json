@@ -51,6 +51,8 @@
         "usernameMaxChars": "Username : Ensure this field has no more than 100 characters.",
         "usernameMinChars": "Username : Ensure this field has at least 3 characters.",
         "usernameSpecialChars": "Username : Ensure this field has no special characters.",
+        "usernameExisting": "Username : A user with that username already exists.",
+        "usernameInvalid": "Username : Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.",
         "firstNameRequired": "First name : Is required",
         "firstNameMaxChars": "First name : Ensure this field has no more than 100 characters.",
         "firstNameMinChars": "First name : Ensure this field has at least 3 characters.",
@@ -60,7 +62,9 @@
         "lastNameMinChars": "Last name : Ensure this field has at least 3 characters.",
         "lastNameSpecialChars": "Last name : Ensure this field has no special characters.",
         "emailRequired": "Email : Is required",
-        "emailExisting": "Email : user with this mail already exists."
+        "emailExisting": "Email : user with this email already exists.",
+        "emailInvalid": "Email : Enter a valid email address."
+
     },
     "basket": {
         "heading": "BASKET",
