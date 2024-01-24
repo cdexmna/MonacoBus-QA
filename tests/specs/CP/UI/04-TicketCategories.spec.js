@@ -9,7 +9,7 @@ const fs = require("fs");
 const LoginScreenCP = require('../../../screenObjects/CP/login.screen.js');
 const LoginScreenDI = require('../../../screenObjects/English/DI/login.screen.js');
 const NavigationCP = require('../../../screenObjects/CP/navigation.wrapper.js');
-const ticketCategoriesCP = require('../../../screenObjects/CP/TicketCategorys.screen.js');
+const ticketCategoriesCP = require('../../../screenObjects/CP/TicketCategories.screen.js');
 const TicketCategoriesCP = require('../../../screenObjects/CP/TicketCategories.screen.js');
 const UsersCP = require('../../../screenObjects/CP/Users.screen.js');
 const HomeScreenDI = require('../../../screenObjects/English/DI/home.screen.js');
@@ -89,20 +89,21 @@ test.describe('Ticket Categories page', (page) => {
             await expect(ticketCategoriesCP.errorLabelName).not.toBeVisible();
         });
         test.describe('Function', (page) => {
+            const id30char = uuidv4();
+            const name = id30char.substring(0, 20);
             test.afterEach(async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 await page.getByText(name).first().click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
                 await page.waitForSelector('text=Are you sure?');
                 await ticketCategoriesCP.overlayDeleteTicketCategory.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
             });
             test('should create a new Ticket category', async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 const navigationCP = new NavigationCP(page);
-                const id30char = uuidv4();
-                const name = id30char.substring(0, 20);
+               
                 await navigationCP.linkTicketCategories.click();
                 await page.waitForSelector('text=New Category');
                 await ticketCategoriesCP.newTicketCategory.click();
@@ -148,120 +149,132 @@ test.describe('Ticket Categories page', (page) => {
             await expect(page.locator('text=' + name)).toBeVisible();
         });
     });
-    test.describe('edit ticket category', (page) => {
+    test.describe('Edit ticket category', (page) => {
         const nameEdit = id30char.substring(0, 20);
         test.beforeEach(async ({ page }) => {
             const description = 'Test description';
             const ticketCategoriesCP = new TicketCategoriesCP(page);
             
-            await page.waitForSelector('text=New Ticket Category');
-            await ticketCategoriesCP.btnN
+            await page.waitForSelector('text=New Category');
+            await page.waitForTimeout(2000);
+            await ticketCategoriesCP.btnNewCategory.click();
             await page.waitForSelector('text=Create a New Ticket Category');
             await ticketCategoriesCP.inputName.fill(nameEdit);
             await ticketCategoriesCP.inputDescription.fill(description);
-            await ticketCategoriesCP.selectStatus.selectOption({ label: 'available' });
+            await ticketCategoriesCP.inputPosition.fill('100');
             await ticketCategoriesCP.btnSubmit.click();
-            await page.waitForSelector('text=New Ticket Category');
+            await page.waitForSelector('text=New Category');
         });
-        test.afterEach(async ({ page }) => {
-            const ticketCategoriesCP = new TicketCategoriesCP(page);    
-            await page.getByText(nameEdit).first().click();
-            await page.waitForSelector('text=edit ticket category');
-            await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
-            await page.waitForSelector('text=Are you sure?');
-            await ticketCategoriesCP.overlayDeleteTicketCategory.click();
-            await page.waitForSelector('text=New Ticket Category');
-        });
+        
         test.describe('check for UI elements', (page) => {
-            test('tapping the transport name should open the edit ticket category wrapper', async ({ page }) => {
+            test('tapping the Ticket Category name should open the edit ticket category wrapper', async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 const navigationCP = new NavigationCP(page);
                 
                 await navigationCP.linkTicketCategories.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 
                 await page.getByText(nameEdit, {exact: true}).click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 await expect(ticketCategoriesCP.editTicketCategoryHeading).toBeVisible();
-                await expect(ticketCategoriesCP.editTicketCategoryStatus).toBeVisible();
+                await expect(ticketCategoriesCP.editTicketCategoryName).toBeVisible();
                 await expect(ticketCategoriesCP.editTicketCategoryUpdateTicketCategory).toBeVisible();
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategoryHeading).toBeVisible();
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategory).toBeVisible();
             });
         });
         test.describe('Function', (page) => {
-            test('should update the transport - all fields', async ({ page }) => {
+            test.afterEach(async ({ page }) => {
+                const ticketCategoriesCP = new TicketCategoriesCP(page);    
+                await page.getByText(nameEdit).first().click();
+                await page.waitForSelector('text=Edit Ticket Category');
+                await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
+                await page.waitForSelector('text=Are you sure?');
+                await ticketCategoriesCP.overlayDeleteTicketCategory.click();
+                await expect(page.getByText(nameEdit).first()).not.toBeVisible();
+                await page.waitForSelector('text=New Category');
+            });
+            // test.beforeEach(async ({ page }) => {
+            //     const description = 'Test description';
+            //     const ticketCategoriesCP = new TicketCategoriesCP(page);
+                
+            //     await page.waitForSelector('text=New Category');
+            //     await ticketCategoriesCP.btnNewCategory.click();
+            //     await page.waitForSelector('text=Create a New Ticket Category');
+            //     await ticketCategoriesCP.inputName.fill(nameEdit);
+            //     await ticketCategoriesCP.inputDescription.fill(description);
+            //     await ticketCategoriesCP.inputPosition.fill('100');
+            //     await ticketCategoriesCP.btnSubmit.click();
+            //     await page.waitForSelector('text=New Category');
+            // });
+            test('should update the Ticket Category - all fields', async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 const navigationCP = new NavigationCP(page);
                 
                 await navigationCP.linkTicketCategories.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 
-                await page.getByText(nameEdit, {exact: true}).click();
-                await page.waitForSelector('text=edit ticket category');
-                await ticketCategoriesCP.editTicketCategoryname.fill(nameEdit + ' Edited ID');
-                await ticketCategoriesCP.editTicketCategoryLastOdometerReading.fill('2000');
-                await ticketCategoriesCP.editTicketCategoryStatus.selectOption({ label: 'out of service' });
-                await ticketCategoriesCP.editTicketCategoryTicketCategoryType.selectOption({ label: 'Train' });
-                await ticketCategoriesCP.editTicketCategorydescription.fill('Edited description');
+                await page.getByText(nameEdit).first().click();
+                await page.waitForSelector('text=Edit Ticket Category');
+                await ticketCategoriesCP.editTicketCategoryName.fill(nameEdit + ' Edited');
+                await ticketCategoriesCP.editTicketCategoryPosition.fill('200');
+                await ticketCategoriesCP.editTicketCategoryDescription.fill('Edited description');
                 await ticketCategoriesCP.editTicketCategoryUpdateTicketCategory.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 await expect(ticketCategoriesCP.overlayUpdatedSuccessfully).toBeVisible();
-                await expect(page.getByRole('row', { name: nameEdit+' 1000 Bus available Test description' })).not.toBeVisible();
-                await expect(page.getByRole('row', { name: nameEdit + ' Edited ID 2000 Train out of service Edited description' })).toBeVisible();
+                await expect(page.getByRole('row', { name: nameEdit+'Test description 100' })).not.toBeVisible();
+                await expect(page.getByRole('row', { name: nameEdit + ' Edited Edited description 200' })).toBeVisible();
                 // await expect(ticketCategoriesCP.editTicketCategoryHeading).not.toBeVisible();
             });
         });
     });
-    test.describe('Delete Ticket Categories', (page) => {
+    test.describe('Delete Ticket Categories', (page) => { // BUG 8181 - can use only one test at a time in this describe
         test.describe('check for UI elements', (page) => {
             const nameDelete = id30char.substring(0, 30);
             test.beforeEach(async ({ page }) => {
                 const description = 'Test description';
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
+                await page.waitForTimeout(2000);
                 await ticketCategoriesCP.btnNewCategory.click();
                 await page.waitForSelector('text=Create a New Ticket Category');
                 await ticketCategoriesCP.inputName.fill(nameDelete);
+                await ticketCategoriesCP.inputPosition.fill('100');
                 await ticketCategoriesCP.inputDescription.fill(description);
-                await ticketCategoriesCP.selectStatus.selectOption({ label: 'available' });
-                await ticketCategoriesCP.selectTicketCategoryType.selectOption({ label: 'Bus' });
                 await ticketCategoriesCP.btnSubmit.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
             });
             test.afterEach(async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 await page.getByText(nameDelete).first().click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
                 await page.waitForSelector('text=Are you sure?');
                 await ticketCategoriesCP.overlayDeleteTicketCategory.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await expect(page.getByText(nameDelete).first()).not.toBeVisible();
+                await page.waitForSelector('text=New Category');
             });
-            test('check all elements for delete transports', async ({ page }) => {
+            test('check all elements for delete Ticket Category', async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 const navigationCP = new NavigationCP(page);
                 
                 await navigationCP.linkTicketCategories.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 
                 await page.getByText(nameDelete).click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 // await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategoryHeading).toBeVisible();
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategory).toBeVisible();
             });
-            test('check for alert messages on delete transport', async ({ page }) => {
+            test('check for alert messages on delete Ticket Category', async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 const navigationCP = new NavigationCP(page);
                 
-                await navigationCP.linkTicketCategories.click();
-                await page.waitForSelector('text=New Ticket Category');
-                
                 await page.getByText(nameDelete).click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
                 await page.waitForSelector('text=Are you sure?');
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategoryAlertTitle).toBeVisible();
@@ -274,45 +287,44 @@ test.describe('Ticket Categories page', (page) => {
                 const navigationCP = new NavigationCP(page);
                 
                 await navigationCP.linkTicketCategories.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 
                 await page.getByText(nameDelete).first().click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
                 await ticketCategoriesCP.editTicketCategoryDeleteTicketCategoryGoBack.click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategoryAlertMessage).not.toBeVisible();
             });
         });
         test.describe('Function', (page) => {
-            test('should delete the transport', async ({ page }) => {
+            test('should delete the ticket category', async ({ page }) => {
                 const nameDelete = id30char.substring(0, 30);
                 const description = 'Test description';
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 await ticketCategoriesCP.btnNewCategory.click();
                 await page.waitForSelector('text=Create a New Ticket Category');
                 await ticketCategoriesCP.inputName.fill(nameDelete);
+                await ticketCategoriesCP.inputPosition.fill('100');
                 await ticketCategoriesCP.inputDescription.fill(description);
-                await ticketCategoriesCP.selectStatus.selectOption({ label: 'available' });
-                await ticketCategoriesCP.selectTicketCategoryType.selectOption({ label: 'Bus' });
                 await ticketCategoriesCP.btnSubmit.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
 
                 const navigationCP = new NavigationCP(page);
                 
                 await navigationCP.linkTicketCategories.click();
-                await page.waitForSelector('text=New Ticket Category');
+                await page.waitForSelector('text=New Category');
                 
                 await page.getByText(nameDelete).first().click();
-                await page.waitForSelector('text=edit ticket category');
+                await page.waitForSelector('text=Edit Ticket Category');
                 await ticketCategoriesCP.editTicketCategoryDeleteTicketCategory.click();
                 await page.waitForSelector('text=Are you sure?');
                 await ticketCategoriesCP.overlayDeleteTicketCategory.click();
                 await expect(ticketCategoriesCP.overlayDeletedSuccessfully).toBeVisible();
-                await page.waitForSelector('text=New Ticket Category');
-                await expect(page.getByRole('row', { name: nameDelete + ' 2000 Train out of service Edited description' })).not.toBeVisible();
+                await page.waitForSelector('text=New Category');
+                await expect(page.getByRole('row', { name: nameDelete + ' Test description 100' })).not.toBeVisible();
             });
         });
     });

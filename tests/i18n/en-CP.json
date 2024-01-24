@@ -105,8 +105,9 @@
         },
         "editTicketCategory": {
           "inputs": {
-            "identifier": "identifier",
-            "description": "description"
+            "name": "name",
+            "description": "description",
+            "position": "position"
           },
           "selects": {
             "status": "status",
