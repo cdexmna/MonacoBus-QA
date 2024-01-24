@@ -17,7 +17,7 @@ const HomeScreenDI = require('../../../screenObjects/English/DI/home.screen.js')
 
 const testUserDI = DimiDI;
 const testUserCS = DimiCS;
-test.setTimeout(180000);
+test.setTimeout(60000);
 const lang = "en"
 const languageFile = JSON.parse(fs.readFileSync("tests/i18n/" + lang + "-CP.json"));
 const strings = languageFile.screens.home;
