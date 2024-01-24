@@ -148,16 +148,62 @@
         "delete": "Delete"
       },
       "wrapper": {
-        "inputs": {
+        "newUser": {
+          "inputs": {
+            "username": "username",
             "firstName": "firstName",
             "lastName": "lastName",
             "email": "email"
+          },
+          "selects": {},
+          "textAreas": {},
+          "text": {
+            "createANewUser": "Create a new User",
+            "enrollANewUser": "Enroll a new user in the system."
+          }
         },
+        "editUser": {
+          "inputs": {
+            "username": "username",
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "email": "email"
+          },
+          "text": {
+           "editUser": "Edit User",
+           "editUserDescription": "information.",
+           "deleteUser": "Delete User"
+          },
+          "buttons": {
+            "updateUser": "Update User",
+            "deleteUser": "Delete User",
+            "goBack": "Go back"
+          },
+          "alerts": {
+            "deleteUserTitle": "Are you sure?",
+            "deleteUserMessage": "This action cannot be undone. This will permanently delete",
+            "deleteUserElements": "These elements will be deleted:"
+          },
+          "messages": {
+            "userCreatedSuccessfully": "User created successfully.",
+            "userUpdatedSuccessfully": "User updated successfully.",
+            "userUpdatedError": "Couldn't update user.",
+            "userDeletedSuccessfully": "User deleted successfully.",
+            "userCreateError": "Couldn't create user.",
+            "userDeleteError": "Couldn't delete user."
+            }
+       },
         "buttons": {
             "submit": "Create User"
         },
         "messages": {
-            "userCreatedSuccessfully": "User created successfully."
+            "userCreatedSuccessfully": "User created successfully.",
+            "userUpdatedSuccessfully": "User updated successfully.",
+            "userUpdatedError": "Couldn't update user.",
+            "userDeletedSuccessfully": "User deleted successfully.",
+            "userCreateError": "Couldn't create user.",
+            "userDeleteError": "Couldn't delete user."
+            }
         },
         "texts": {
           "createANewUser": "Create a new User",
@@ -169,4 +215,3 @@
       }
     }
   }
-}
