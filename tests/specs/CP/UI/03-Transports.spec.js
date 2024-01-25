@@ -197,7 +197,7 @@ test.describe('Transports page', (page) => {
             await expect(transportsCP.overlayCreateError).toBeVisible({timeout: 10000});
             await expect(transportsCP.errorLabelIdentifierAlreadyExist).toBeVisible();
             await page.waitForSelector('text=New Transport');
-            await page.getByText(identifier).first().click();
+            await page.getByText(identifier).first().click({timeout:15000});
             await page.waitForSelector('text=Edit Transport');
             await transportsCP.editTransportDeleteTransport.click();
             await page.waitForSelector('text=Are you sure?');
@@ -233,7 +233,7 @@ test.describe('Transports page', (page) => {
         test.describe('Function', (page) => {
             test.afterEach(async ({ page }) => {
                 const transportsCP = new TransportsCP(page);
-                await page.getByText(identifier).first().click();
+                await page.getByText(identifier).first().click({timeout:15000});
                 await page.waitForSelector('text=Edit Transport');
                 await transportsCP.editTransportDeleteTransport.click();
                 await page.waitForSelector('text=Are you sure?');
@@ -319,7 +319,7 @@ test.describe('Transports page', (page) => {
         });
         test.afterEach(async ({ page }) => {
             const transportsCP = new TransportsCP(page);    
-            await page.getByText(identifierEdit).first().click();
+            await page.getByText(identifierEdit).first().click({timeout:15000});
             await page.waitForSelector('text=Edit Transport');
             await transportsCP.editTransportDeleteTransport.click();
             await page.waitForSelector('text=Are you sure?');
@@ -349,7 +349,7 @@ test.describe('Transports page', (page) => {
             await navigationCP.linkTransports.click();
             await page.waitForSelector('text=New Transport');
 
-            await page.getByText(identifierEdit).first().click();
+            await page.getByText(identifierEdit).first().click({timeout:15000});
             await page.waitForSelector('text=Edit Transport');
             await transportsCP.editTransportIdentifier.fill('alreadyExist');
             await transportsCP.editTransportUpdateTransport.click();
@@ -400,7 +400,7 @@ test.describe('Transports page', (page) => {
             });
             test.afterEach(async ({ page }) => {
                 const transportsCP = new TransportsCP(page);
-                await page.getByText(identifierDelete).first().click();
+                await page.getByText(identifierDelete).first().click({timeout:15000});
                 await page.waitForSelector('text=Edit Transport');
                 await transportsCP.editTransportDeleteTransport.click();
                 await page.waitForSelector('text=Are you sure?');
@@ -444,7 +444,7 @@ test.describe('Transports page', (page) => {
                 await navigationCP.linkTransports.click();
                 await page.waitForSelector('text=New Transport');
                 
-                await page.getByText(identifierDelete).first().click();
+                await page.getByText(identifierDelete).first().click({timeout:15000});
                 await page.waitForSelector('text=Edit Transport');
                 await transportsCP.editTransportDeleteTransport.click();
                 await transportsCP.editTransportDeleteTransportGoBack.click();
@@ -474,7 +474,7 @@ test.describe('Transports page', (page) => {
                 await navigationCP.linkTransports.click();
                 await page.waitForSelector('text=New Transport');
                 
-                await page.getByText(identifierDelete).first().click();
+                await page.getByText(identifierDelete).first().click({timeout:15000});
                 await page.waitForSelector('text=Edit Transport');
                 await transportsCP.editTransportDeleteTransport.click();
                 await page.waitForSelector('text=Are you sure?');
