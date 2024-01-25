@@ -64,8 +64,35 @@
         "emailRequired": "Email : Is required",
         "emailExisting": "Email : user with this email already exists.",
         "emailInvalid": "Email : Enter a valid email address."
-
     },
+
+    "ticketType":{
+        "nameRequired": "Name : Is required",
+        "nameMaxChars": "Name : Ensure this field has no more than 100 characters.",
+        "nameMinChars": "Name : Ensure this field has at least 3 characters.",
+        "nameSpecialChars": "Name : Ensure this field has no special characters.",
+        "nameExisting": "Name : ticket type with this name already exists.",
+        "priceRequired": "Price : Is required",
+        "priceMaxChars": "Price : Ensure this field has no more than 100 characters.",
+        "priceMinChars": "Price : Ensure this field has at least 3 characters.",
+        "priceSpecialChars": "Price : Ensure this field has no special characters.",
+        "priceExisting": "Price : A ticket type with that price already exists.",
+        "priceInvalid": "Price : Ensure this value is greater than or equal to 0.00.",
+        "priceMin": "Price : Ensure this value is greater than or equal to 0.",
+        "priceMax": "Price : Ensure this value is less than or equal to 1000000.",
+        "positionRequired": "Position : Is required",
+        "positionMaxChars": "Position : Ensure this field has no more than 100 characters.",
+        "positionMinChars": "Position : Ensure this field has at least 3 characters.",
+        "positionSpecialChars": "Position : Ensure this field has no special characters.",
+        "positionExisting": "Position : A ticket type with that position already exists.",
+        "positionInvalid": "Position : Ensure this value is greater than or equal to 0.",
+        "positionMin": "Position : Ensure this value is greater than or equal to 0.",
+        "positionMax": "Position : Ensure this value is less than or equal to 1000000.",
+        "vatRateRequired": "Vat Rate : Is required",
+        "iconRequired": "Icon : Is required",
+        "ticketCategoryRequired": "Ticket category : Is required"
+    },
+
     "basket": {
         "heading": "BASKET",
         "empty_cart": "Empty Cart",

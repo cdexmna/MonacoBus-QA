@@ -8,43 +8,56 @@ class TicketTypesCP {
     }
 
     get btnNewTicketType() {
-        return (this.page.locator(`button:has-text("${this.strings.buttons.newTicketType}")`));
+        // return (this.page.locator(`a[name="${this.strings.buttons.newTicketType}"]`));
+        return (this.page.getByRole('button', { name: this.strings.buttons.newTicketType }));
     }
 
     get textOfferANewTicketType() {
-        return (this.page.getByText(this.strings.wrapper.newTicketTypes.text.offerANewTicketType));
+        return (this.page.getByText(this.strings.wrapper.newTicketType.text.offerANewTicketType));
     }
 
     get btnBack() {
-        return (this.page.locator('div').filter({ hasText: /^Create a new TicketTypes$/ }).getByRole('link'));
+        return (this.page.locator('div').filter({ hasText: /^Create a new Ticket Type$/ }).getByRole('link'));
     }
 
     get textCreateANewTicketType() {
-        return (this.page.getByText(this.strings.wrapper.newTicketTypes.text.createANewTicketType));
+        return (this.page.getByText(this.strings.wrapper.newTicketType.text.createANewTicketType));
     }
 
-    get messageTicketTypesCreatedSuccessfully() {
-        return (this.page.getByText(this.strings.wrapper.messages.userCreatedSuccessfully));
+    get messageTicketTypeCreatedSuccessfully() {
+        return (this.page.getByText(this.strings.wrapper.messages.ticketTypeCreatedSuccessfully));
     }
 
     get inputName() {
-        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketTypes.inputs.name}"]`));
+        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.name}"]`));
     }
 
     get inputPrice() {
-        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketTypes.inputs.price}"]`));
+        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.price}"]`));
     }
 
     get inputPosition() {
-        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketTypes.inputs.position}"]`));
+        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.position}"]`));
+    }
+
+    get selectIcon() {
+        return (this.page.locator(`select[name="${this.strings.wrapper.newTicketType.selects.icon}"]`));
+    }
+
+    get selectVat() {
+        return (this.page.locator(`select[name="${this.strings.wrapper.newTicketType.selects.vat}"]`));
+    }
+
+    get selectTicketCategory() {
+        return (this.page.locator(`select[name="${this.strings.wrapper.newTicketType.selects.ticketCategory}"]`));
     }
 
     get btnSubmit() {
-        return (this.page.locator(`button:has-text("${this.strings.wrapper.buttons.submit}")`));
+        return (this.page.locator(`button:has-text("${this.strings.buttons.submit}")`));
     }
 
     get overlayCreatedSuccessfully() {
-        return (this.page.locator(`div:has-text("${this.strings.wrapper.messages.createdSuccessfully}")`).last());
+        return (this.page.locator(`div:has-text("${this.strings.wrapper.messages.ticketTypeCreatedSuccessfully}")`).last());
     }
 
     get linkDelete() {
@@ -52,101 +65,103 @@ class TicketTypesCP {
     }
 
     get errorLabelNameRequired() {
-        return (this.page.getByText(this.errorLabels.users.nameRequired));
+        return (this.page.getByText(this.errorLabels.ticketType.nameRequired));
     }
 
     get errorLabelPriceRequired() {
-        return (this.page.getByText(this.errorLabels.users.priceRequired));
-    }
-
-    get errorLabelNameRequired() {
-        return (this.page.getByText(this.errorLabels.users.nameRequired));
+        return (this.page.getByText(this.errorLabels.ticketType.priceRequired));
     }
 
     get errorLabelNameAlreadyExist() {
-        return (this.page.getByText(this.errorLabels.users.nameExisting));
+        return (this.page.getByText(this.errorLabels.ticketType.nameExisting));
     }
 
     get errorLabelPositionAlreadyExist() {
-        return (this.page.getByText(this.errorLabels.users.positionExisting));
+        return (this.page.getByText(this.errorLabels.ticketType.positionExisting));
     }
 
     get errorLabelPositionRequired() {
-        return (this.page.getByText(this.errorLabels.users.positionRequired));
+        return (this.page.getByText(this.errorLabels.ticketType.positionRequired));
     }
 
     get errorLabelPositionInvalid() {
-        return (this.page.getByText(this.errorLabels.users.positionInvalid));
+        return (this.page.getByText(this.errorLabels.ticketType.positionInvalid));
     }
 
-
-
-   get editTicketTypesHeading() {
-        return (this.page.locator(`p:text-is("${this.strings.wrapper.editTicketTypes.text.editTicketTypes}")`));
+    get errorLabelIconRequired() {
+        return (this.page.getByText(this.errorLabels.ticketType.iconRequired));
     }
 
-    get editTicketTypesTicketTypesname() {
-        return (this.page.locator(`input[name="${this.strings.wrapper.editTicketTypes.inputs.username}"]`));
+    get errorLabelVatRateRequired() {
+        return (this.page.getByText(this.errorLabels.ticketType.vatRateRequired));
     }
 
-    get editTicketTypesName() {
-        return (this.page.locator(`input[name="${this.strings.wrapper.editTicketTypes.inputs.name}"]`));
+    get errorLabelTicketCategoryRequired() {
+        return (this.page.getByText(this.errorLabels.ticketType.ticketCategoryRequired));
     }
 
-    get editTicketTypesPrice() {
-        return (this.page.locator(`input[name="${this.strings.wrapper.editTicketTypes.inputs.price}"]`));
+    get errorLabelPriceInvalid() {
+        return (this.page.getByText(this.errorLabels.ticketType.priceInvalid));
     }
 
-    get editTicketTypesPosition() {
-        return (this.page.locator(`input[name="${this.strings.wrapper.editTicketTypes.inputs.position}"]`));
+    get editTicketTypeHeading() {
+        return (this.page.getByText(this.strings.wrapper.editTicketType.heading));
     }
 
-    get editTicketTypesUpdateTicketTypes() {
-        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTicketTypes.buttons.updateTicketTypes}")`));
+    get btnUpdate() {
+        return (this.page.locator(`button:has-text("${this.strings.wrapper.editTicketType.buttons.update}")`));
+    }
+
+    get messageTicketTypeUpdatedSuccessfully() {
+        return (this.page.getByText(this.strings.wrapper.messages.ticketTypeUpdatedSuccessfully));
     }
 
     get overlayUpdatedSuccessfully() {
-        return this.page.locator(`:text("${this.strings.wrapper.editTicketTypes.messages.userUpdatedSuccessfully}")`);
+        return (this.page.locator(`div:has-text("${this.strings.wrapper.messages.ticketTypeUpdatedSuccessfully}")`).last());
     }
     get overlayCreateError() {
-        return this.page.locator(`:text("${this.strings.wrapper.editTicketTypes.messages.userCreateError}")`);
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketType.messages.ticketTypeCreateError}")`);
     }
 
     get overlayUpdateError() {
-        return this.page.locator(`:text("${this.strings.wrapper.editTicketTypes.messages.userUpdatedError}")`);
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketType.messages.ticketTypeUpdatedError}")`);
     }
 
     get overlayDeleteError() {
-        return this.page.locator(`:text("${this.strings.wrapper.editTicketTypes.messages.userDeleteError}")`);
+        return this.page.locator(`:text("${this.strings.wrapper.editTicketType.messages.ticketTypeDeleteError}")`);
     }
 
-    get editTicketTypesDeleteTicketTypes() {
-        return (this.page.locator('#root').locator(`button:text-is("${this.strings.wrapper.editTicketTypes.buttons.deleteTicketTypes}")`));
+    get editTicketTypeDeleteTicketType() {
+        return (this.page.locator('#root').locator(`button:text-is("${this.strings.wrapper.editTicketType.buttons.deleteTicketType}")`));
     }
 
-    get editTicketTypesDeleteTicketTypesHeading()  {
-        return (this.page.locator(`p:text-is("${this.strings.wrapper.editTicketTypes.text.deleteTicketTypes}")`));
+    get editTicketTypeDeleteTicketTypeHeading()  {
+        return (this.page.locator(`p:text-is("${this.strings.wrapper.editTicketType.text.deleteTicketType}")`));
     }
 
-    get editTicketTypesDeleteTicketTypesAlertTitle() {
-        return (this.page.getByText(`${this.strings.wrapper.editTicketTypes.alerts.deleteTicketTypesTitle}`));
+    get editTicketTypeDeleteTicketTypeAlertTitle() {
+        return (this.page.getByText(`${this.strings.wrapper.editTicketType.alerts.deleteTicketTypesTitle}`));
     }
 
-    get editTicketTypesDeleteTicketTypesAlertMessage() {
-        return (this.page.getByText(`${this.strings.wrapper.editTicketTypes.alerts.deleteTicketTypesMessage}`));
+    get editTicketTypeDeleteTicketTypeAlertMessage() {
+        return (this.page.getByText(`${this.strings.wrapper.editTicketType.alerts.deleteTicketTypesMessage}`));
     }
 
-    get editTicketTypesDeleteTicketTypesGoBack() {
-        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTicketTypes.buttons.goBack}")`));
+    get confirmDeleteTicketType() {
+        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTicketType.buttons.confirmDeleteTicketType}")`).last());
     }
 
-    get overlayDeleteTicketTypes() {
-        return (this.page.getByRole('dialog').locator(`button:text-is("${this.strings.wrapper.editTicketTypes.buttons.deleteTicketTypes}")`));
+    get cancelDeleteTicketType() {
+        return (this.page.locator(`button:text-is("${this.strings.wrapper.editTicketType.buttons.goBack}")`));
+    }
+
+    get messageTicketTypeDeletedSuccessfully() {
+        return (this.page.getByText(this.strings.wrapper.messages.ticketTypeDeletedSuccessfully));
     }
 
     get overlayDeletedSuccessfully() {
-        return this.page.locator(`:text("${this.strings.wrapper.editTicketTypes.messages.userDeletedSuccessfully}")`);
+        return (this.page.locator(`div:has-text("${this.strings.wrapper.messages.ticketTypeDeletedSuccessfully}")`).last());
     }
 }
 
-module.exports = TicketTypessCP
+module.exports = TicketTypesCP
