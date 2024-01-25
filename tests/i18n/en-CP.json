@@ -212,6 +212,69 @@
       },
       "links": {
         "delete": "Delete"
+      },
+
+      "ticketTypes": {
+        "buttons": {
+          "submit": "Create Ticket Type",
+          "newTicketType": "New Type"
+        },
+        "wrapper": {
+          "newTicketType": {
+            "inputs": {
+              "name": "name",
+              "price": "price",
+              "position": "position"
+            },
+            "selects":{
+              "ticketCategory": "ticketCategory",
+              "vat": "vatRate",
+              "icon": "icon"
+            },
+            "buttons": {
+              "submit": "Create Ticket Type"
+            },
+            "text": {
+              "createANewTicketType": "Create a new Ticket Type",
+              "offerANewTicketType": "Offer a new ticket type to your customers."
+            }
+          },
+          "editTicketType": {
+            "heading": "Edit Ticket Type",
+            "buttons": {
+              "update": "Update Ticket Type",
+              "deleteTicketType": "Delete Ticket Type",
+              "confirmDeleteTicketType": "Delete Ticket Type",
+              "goBack": "Go back"
+            },
+            "alerts": {
+              "deleteTicketTypesTitle": "Are you sure?",
+              "deleteTicketTypesMessage": "This action cannot be undone. This will permanently delete",
+              "deleteTicketTypesElements": "These elements will be deleted:"
+            },
+            "messages": {
+              "ticketTypeCreatedSuccessfully": "Ticket Type created successfully.",
+              "ticketTypeUpdatedSuccessfully": "Ticket Type updated successfully.",
+              "ticketTypeUpdatedError": "Couldn't update ticket type.",
+              "ticketTypeDeletedSuccessfully": "Ticket Type deleted successfully.",
+              "ticketTypeCreateError": "Couldn't create ticket type.",
+              "ticketTypeDeleteError": "Couldn't delete ticket type."
+            },
+            "text": {
+              "editTicketType": "Edit Ticket Type",
+              "editTicketTypeDescription": "information.",
+              "deleteTicketType": "Delete Ticket Type"
+            }
+          },
+        "messages": {
+          "ticketTypeCreatedSuccessfully": "Ticket Type created successfully.",
+          "ticketTypeUpdatedSuccessfully": "Ticket Type updated successfully.",
+          "ticketTypeUpdatedError": "Couldn't update ticket type.",
+          "ticketTypeDeletedSuccessfully": "Ticket Type deleted successfully.",
+          "ticketTypeCreateError": "Couldn't create ticket type.",
+          "ticketTypeDeleteError": "Couldn't delete ticket type."
+        }
       }
     }
-  }
+  } 
+}
