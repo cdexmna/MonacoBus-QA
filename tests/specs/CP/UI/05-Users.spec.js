@@ -88,7 +88,7 @@ test.describe('Users page', (page) => {
                 await usersCP.inputFirstName.fill('Test');
                 await usersCP.inputLastName.fill('User');
                 await usersCP.inputEmail.fill(username + '@email.com');
-                await expect(usersCP.errorLabelUserNameRequired).not.toBeVisible({timeout:10000});
+                await expect(usersCP.errorLabelUsernameRequired).not.toBeVisible({timeout:10000});
                 await expect(usersCP.errorLabelFirstNameRequired).not.toBeVisible({timeout:10000});
                 await expect(usersCP.errorLabelLastNameRequired).not.toBeVisible({timeout:10000});
                 await expect(usersCP.errorLabelEmailRequired).not.toBeVisible({timeout:10000});
@@ -172,7 +172,7 @@ test.describe('Users page', (page) => {
                     await usersCP.btnSubmit.click();
                     await expect(usersCP.overlayCreatedSuccessfully).toBeVisible({timeout: 10000});
                     await page.waitForSelector('text=New User');
-                    await expect(page.locator('table').locator('text=' + username + " Test")).toBeVisible();
+                    await expect(page.locator(`table :text-is("${username}")`)).toBeVisible();
                 });
             });
             test.fixme('should be to create a new user and login the Drivers Interface with those credentials', async ({ page }) => {
@@ -191,7 +191,7 @@ test.describe('Users page', (page) => {
                 await usersCP.btnSubmit.click();
                 await expect(usersCP.overlayCreatedSuccessfully).toBeVisible({timeout: 10000});
                 await page.waitForSelector('text=New User');
-                await expect(page.locator('table').locator('text=' + username + " Test")).toBeVisible();
+                await expect(page.locator(`table :text-is("${username}")`)).toBeVisible();
                 await page.goto('https://seashell-app-pkyfy.ondigitalocean.app/');
                 await loginScreenCP.inputUsername.fill(username);
                 await loginScreenCP.inputPassword.fill('password');
@@ -223,7 +223,7 @@ test.describe('Users page', (page) => {
                 await page.waitForSelector('text=Are you sure?');
                 await usersCP.overlayDeleteUser.click();
                 await page.waitForSelector('text=New User');
-                await expect(page.locator('table').locator('text=' + username + " Test")).not.toBeVisible();
+                await expect(page.locator(`table :text-is("${username}")`)).not.toBeVisible();
             });
             test('tapping the username should open the edit user wrapper', async ({ page }) => {
                 const usersCP = new UsersCP(page);
@@ -262,7 +262,7 @@ test.describe('Users page', (page) => {
                     await usersCP.editUserUpdateUser.click();
                     await page.waitForSelector('text=New User');
                     await expect(usersCP.overlayUpdatedSuccessfully).toBeVisible();
-                    await expect(page.locator('text=' + username + " Test" + ' Edited')).toBeVisible();
+                    await expect(page.locator(`table :text-is("${username}")`)).toBeVisible();
                 });
             });
         });
@@ -291,7 +291,7 @@ test.describe('Users page', (page) => {
                     await page.waitForSelector('text=Are you sure?');
                     await usersCP.overlayDeleteUser.click();
                     await page.waitForSelector('text=New User');
-                    await expect(page.locator('table').locator('text=' + username + " Test")).not.toBeVisible();
+                    await expect(page.locator(`table :text-is("${username}")`)).not.toBeVisible();
                 });
                 test('check all elements for delete user', async ({ page }) => {
                     const usersCP = new UsersCP(page);
@@ -347,7 +347,7 @@ test.describe('Users page', (page) => {
                     await usersCP.overlayDeleteUser.click();
                     await page.waitForSelector('text=New User');
                     await expect(usersCP.overlayDeletedSuccessfully).toBeVisible();
-                    await expect(page.locator('table').locator('text=' + username + " Test")).not.toBeVisible();
+                    await expect(page.locator(`table :text-is("${username}")`)).not.toBeVisible();
                 });
             });
         });

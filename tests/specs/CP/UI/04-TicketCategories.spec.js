@@ -202,7 +202,7 @@ test.describe('Ticket Categories page', (page) => {
             await page.waitForSelector('text=New Category');
         });
         
-        test.describe('check for UI elements', (page) => {
+        test.describe('check for UI elements', (page) => { //BUG: Use one test at a time - can't create 2 in a row
             test('tapping the Ticket Category name should open the edit ticket category wrapper', async ({ page }) => {
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 const navigationCP = new NavigationCP(page);
@@ -310,7 +310,7 @@ test.describe('Ticket Categories page', (page) => {
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategoryHeading).toBeVisible();
                 await expect(ticketCategoriesCP.editTicketCategoryDeleteTicketCategory).toBeVisible();
             });
-            test('check for alert messages on delete Ticket Category', async ({ page }) => {
+            test('check for alert messages on delete Ticket Category', async ({ page }) => { // BUG: User only one test
                 const ticketCategoriesCP = new TicketCategoriesCP(page);
                 const navigationCP = new NavigationCP(page);
                 

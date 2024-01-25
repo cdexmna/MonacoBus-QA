@@ -389,7 +389,7 @@ test.describe('Ticket types', (page) => {
                     await expect(ticketTypesCP.editTicketTypeDeleteTicketTypeHeading).toBeVisible();
                     await expect(ticketTypesCP.editTicketTypeDeleteTicketType).toBeVisible();
                 });
-                test('check for alert messages on delete ticket type', async ({ page }) => {
+                test('check for alert messages on delete ticket type', async ({ page }) => { // BUG: Can't open ticket typ again
                     const ticketTypesCP = new TicketTypesCP(page);
                     await page.waitForSelector('text=New Type');
                     await page.getByText(name).first().click();
