@@ -1,7 +1,7 @@
 const fs = require('fs');
 class LoginScreenCP {
     constructor(page, locale) {
-        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels.json"));
+        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels-"+locale+".json"));
         this.page = page;
         this.errorLabels = errorlabels;
         this.strings = require('../../i18n/en-CP.json').screens.login;
@@ -24,15 +24,19 @@ class LoginScreenCP {
     }
 
     get inputUsername() {
-        return (this.page.locator('input[name="username"]'));
+        return (this.page.locator('input[name="email"]'));
     }
 
     get inputPassword() {
         return (this.page.locator('input[name="password"]'));
     }
 
-    get errorLabelFailedLogin() {
-        return (this.page.getByText(this.errorLabels.login.error_label_failed_login))
+    get errorLabelInvalidUsernamePassword() {
+        return (this.page.getByText(this.errorLabels.login.error_label_invalid_username_password))
+    }
+
+    get errorLabelEmailSpecialChars() {
+        return (this.page.locator(`div[title="${this.errorLabels.login.error_label_email_special_chars}"]`))
     }
 }
 

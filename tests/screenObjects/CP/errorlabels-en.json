@@ -1,0 +1,110 @@
+
+{
+
+    "login": {
+        "welcome_aboard": "WELCOME ABOARD",
+        "select_your_vehicle": "SELECT YOUR VEHICLE",
+        "username_placeholder": "Enter your username",
+        "password_placeholder": "Enter your password",
+        "mileage_placeholder": "Enter the vehicle",
+        "button_login": "Login",
+        "button_select": "Select",
+        "error_label_username_required": "Username : Username is required",
+        "error_label_email_required": "Email : An email is required",
+        "error_label_password_required": "Password : Password is required",
+        "error_label_failed_login": "Failed to log in. Please check your username and password",
+        "error_label_invalid_username_password": "Invalid username/password",
+        "error_label_email_special_chars": "A part followed by '@' should not contain the symbol '"
+    },
+    "ticket_categories": {
+        "position_ensure_this_value": "Ensure this value is greater than or equal to 0.",
+        "name_ensure_this_field": "Ensure this field has no more than 100 characters",
+        "name_is_required": "Name : Required",
+        "name_already_exist": "Name : Ticket category with this name already exists.",
+        "position_is_required": "Position : Required",
+        "password_placeholder": "Enter your password",
+        "mileage_placeholder": "Enter the vehicle",
+        "button_login": "Login",
+        "button_select": "Select",
+        "error_label_required": "This field is required.",
+        "error_label_all_fields": "Please fill in all fields.",
+        "error_label_failed_login": "Failed to log in. Please check your username and password",
+        "overlay_ticket_categorie_success": "Category created successfully",
+        "overlay_ticket_category_update_error": "Couldn't update ticket category"
+    },
+
+    "transports": {
+        "identifierRequired": "Identifier : Required",
+        "identifier_already_exist": "transport with this identifier already exists.",
+        "lastOdometerReadingRequired": "Last odometer reading : Required",
+        "lastOdometerReading": "Last odometer reading : Ensure this value is greater than or equal to 0.",
+        "manufacturerRequired": "Manufacturer : Required",
+        "manufacturerMaxChars": "Manufacturer : Ensure this field has no more than 100 characters.",
+        "manufacturerMinChars": "Manufacturer : Ensure this field has at least 3 characters.",
+        "isRequired": "Required",
+        "statusRequired": "Status : Required",
+        "transportTypeRequired": "Transport type : Required",
+        "maxChars": "This field may not exceed 100 characters.",
+        "minChars": "This field must be at least 3 characters.",
+        "specialChars": "This field may not contain special characters."
+    },
+
+    "users": {
+        "usernameRequired": "Username : Required",
+        "usernameMaxChars": "Username : Ensure this field has no more than 100 characters.",
+        "usernameMinChars": "Username : Ensure this field has at least 3 characters.",
+        "usernameSpecialChars": "Username : Ensure this field has no special characters.",
+        "usernameExisting": "Username : A user with that username already exists.",
+        "usernameInvalid": "Username : Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.",
+        "firstNameRequired": "First name : Required",
+        "firstNameMaxChars": "First name : Ensure this field has no more than 100 characters.",
+        "firstNameMinChars": "First name : Ensure this field has at least 3 characters.",
+        "firstNameSpecialChars": "First name : Ensure this field has no special characters.",
+        "lastNameRequired": "Last name : Required",
+        "lastNameMaxChars": "Last name : Ensure this field has no more than 100 characters.",
+        "lastNameMinChars": "Last name : Ensure this field has at least 3 characters.",
+        "lastNameSpecialChars": "Last name : Ensure this field has no special characters.",
+        "emailRequired": "Email : Required",
+        "emailExisting": "Email : user with this Email Address already exists.",
+        "emailInvalid": "Email : Enter a valid email address."
+    },
+
+    "ticketType":{
+        "nameRequired": "Name : Required",
+        "nameMaxChars": "Name : Ensure this field has no more than 100 characters.",
+        "nameMinChars": "Name : Ensure this field has at least 3 characters.",
+        "nameSpecialChars": "Name : Ensure this field has no special characters.",
+        "nameExisting": "Name : ticket type with this name already exists.",
+        "priceRequired": "Price per : Required",
+        "priceMaxChars": "Price per : Ensure this field has no more than 100 characters.",
+        "priceMinChars": "Price per : Ensure this field has at least 3 characters.",
+        "priceSpecialChars": "Price per : Ensure this field has no special characters.",
+        "priceExisting": "Price per : A ticket type with that price already exists.",
+        "priceInvalid": "Price per : Ensure this value is greater than or equal to 0.00.",
+        "priceMin": "Price per : Ensure this value is greater than or equal to 0.",
+        "priceMax": "Price per : Ensure this value is less than or equal to 1000000.",
+        "positionRequired": "Position : Required",
+        "positionMaxChars": "Position : Ensure this field has no more than 100 characters.",
+        "positionMinChars": "Position : Ensure this field has at least 3 characters.",
+        "positionSpecialChars": "Position : Ensure this field has no special characters.",
+        "positionExisting": "Position : A ticket type with that position already exists.",
+        "positionInvalid": "Position : Ensure this value is greater than or equal to 0.",
+        "positionMin": "Position : Ensure this value is greater than or equal to 0.",
+        "positionMax": "Position : Ensure this value is less than or equal to 1000000.",
+        "minQuantityMin": "Minimum quantity : Ensure this value is greater than or equal to 0.",
+        "minQuantityMax": "Minimum quantity : Ensure this value is less than or equal to 100.",
+        "vatRateRequired": "Vat Rate : Required",
+        "iconRequired": "Icon : Required",
+        "ticketCategoryRequired": "Category : Required"
+    },
+
+    "basket": {
+        "heading": "BASKET",
+        "empty_cart": "Empty Cart",
+        "checkout": "Checkout",
+        "remove": "Remove",
+        "total": "Total",
+        "ticket": "ticket"
+    }
+
+}

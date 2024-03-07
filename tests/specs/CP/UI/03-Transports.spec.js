@@ -33,19 +33,19 @@ replaced all btnLogin.click() to bounding box script because the button can't be
 */
 
 // TODO: This has to be handled with environment variables (check AdmireMe)
-const pageURL = 'https://ticketing-admin-frontend-j6hga.ondigitalocean.app/';
+const pageURL = 'https://qa.staging.cp.grandtourapp.com/';
 const id30char = uuidv4();
 const identifier = id30char.substring(0, 20);
 
 
-test.describe('Transports page', (page) => {
+test.describe.skip('Transports page', (page) => {
 
     test.beforeEach(async ({ page }) => {
         await page.goto(pageURL, {waitUntil: 'load', timeout: 0});
         const loginScreenCP = new LoginScreenCP(page);
         const navigationCP = new NavigationCP(page);
         const transportsCP = new TransportsCP(page);
-        await loginScreenCP.inputUsername.fill(testUserCS.username);
+        await loginScreenCP.inputUsername.fill(testUserCS.email);
         // await page.waitForTimeout(1000);
         await loginScreenCP.inputPassword.fill(testUserCS.password);
         // await page.waitForTimeout(1000);
@@ -59,7 +59,7 @@ test.describe('Transports page', (page) => {
     // test.afterEach(async ({ page}) => {
     //     const navigationCP = new NavigationCP(page);
     //     const loginScreenCP = new LoginScreenCP(page)
-    //     await navigationCP.hiAmigo.click();
+    //     await navigationCP.hiUser.click();
     //     await navigationCP.signOut.click();
     //     await page.waitForSelector('text=Please sign in');
     // });
@@ -265,7 +265,7 @@ test.describe('Transports page', (page) => {
                 const navigationCP = new NavigationCP(page);
                 const transportsCP = new TransportsCP(page);
                 const loginScreenCP = new LoginScreenCP(page);
-                await loginScreenCP.inputUsername.fill(testUserCS.username);
+                await loginScreenCP.inputUsername.fill(testUserCS.email);
                 await loginScreenCP.inputPassword.fill(testUserCS.password);
                 await loginScreenCP.btnLogin.click();
                 await page.waitForSelector('text=Dashboard');

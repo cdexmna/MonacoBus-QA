@@ -1,7 +1,7 @@
 const fs = require('fs');
 class UsersCP {
-    constructor(page) {
-        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels.json"));
+    constructor(page, locale) {
+        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels-"+locale+".json"));
         this.page = page;
         this.errorLabels = errorlabels;
         this.strings = require('../../i18n/en-CP.json').screens.users;

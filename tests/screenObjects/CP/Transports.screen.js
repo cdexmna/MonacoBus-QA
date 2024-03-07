@@ -2,7 +2,7 @@ const { throws } = require('assert');
 const fs = require('fs');
 class TransportsScreen {
     constructor(page, locale) {
-        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels.json"));
+        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels-"+locale+".json"));
         this.page = page;
         this.errorLabels = errorlabels;
         this.strings = require('../../i18n/en-CP.json').screens.transports;

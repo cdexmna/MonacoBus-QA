@@ -1,6 +1,9 @@
+const fs = require('fs');
 class NavigationCP {
-   constructor(page, locale) {
+  constructor(page, locale) {
+      const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels-"+locale+".json"));
       this.page = page;
+      this.errorLabels = errorlabels;
       this.strings = require('../../i18n/en-CP.json').screens.home;
     }
 
@@ -34,8 +37,8 @@ class NavigationCP {
       return (this.page.locator(`a:text-is("${this.strings.buttons.sales}")`));
     }
 
-    get hiAmigo() {
-      return (this.page.getByText("Hi Amigo"));
+    get hiUser() {
+      return (this.page.locator('button[id*="headlessui-menu-button"]'));
     }
 
     get signOut() {

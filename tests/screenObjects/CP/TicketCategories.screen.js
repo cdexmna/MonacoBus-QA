@@ -1,7 +1,7 @@
 const fs = require('fs');
 class TicketCategoriesCP {
-    constructor(page) {
-        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels.json"));
+    constructor(page, locale) {
+        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels-"+locale+".json"));
         this.page = page;
         this.errorLabels = errorlabels;
         this.strings = require('../../i18n/en-CP.json').screens.ticketCategories;
@@ -59,7 +59,7 @@ class TicketCategoriesCP {
         return (this.page.locator(`a:text-is("${this.strings.buttons.delete}")`));
     }
     get btnBack() {
-        return (this.page.locator('div').filter({ hasText: /^Create a new Ticket Category$/ }).getByRole('link'));
+        return (this.page.locator('div').filter({ hasText: /^Create a new Category$/ }).getByRole('link'));
     }
 
     

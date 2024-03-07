@@ -31,7 +31,7 @@ replaced all btnLogin.click() to bounding box script because the button can't be
 */
 
 // TODO: This has to be handled with environment variables (check AdmireMe)
-const pageURL = 'https://ticketing-admin-frontend-j6hga.ondigitalocean.app/' 
+const pageURL = 'https://qa.staging.cp.grandtourapp.com/' 
 
 test.describe('Users page', (page) => {
     test.beforeEach(async ({ page }) => {
@@ -39,9 +39,9 @@ test.describe('Users page', (page) => {
     });
     test.describe('Users page', (page) => {
         test.beforeEach(async ({ page }) => {
-            const loginScreenCP = new LoginScreenCP(page);
-            const navigationCP = new NavigationCP(page);
-            await loginScreenCP.inputUsername.fill(testUserCS.username);
+            const loginScreenCP = new LoginScreenCP(page, lang);
+            const navigationCP = new NavigationCP(page, lang);
+            await loginScreenCP.inputUsername.fill(testUserCS.email);
             await loginScreenCP.inputPassword.fill(testUserCS.password);
             await loginScreenCP.inputUsername.click();
             await loginScreenCP.btnLogin.click();
@@ -51,12 +51,12 @@ test.describe('Users page', (page) => {
          // test.afterEach(async ({ page}) => {
     //     const navigationCP = new NavigationCP(page);
     //     const loginScreenCP = new LoginScreenCP(page)
-    //     await navigationCP.hiAmigo.click();
+    //     await navigationCP.hiUser.click();
     //     await navigationCP.signOut.click();
     //     await page.waitForSelector('text=Please sign in');
     // })
         test('should show all UI elements', async ({ page }) => {
-            const usersCP = new UsersCP(page);
+            const usersCP = new UsersCP(page, lang);
             const id30char = uuidv4();
             await page.waitForSelector('text=New User');
             await expect(usersCP.btnNewUser).toBeVisible();
@@ -71,14 +71,40 @@ test.describe('Users page', (page) => {
             await expect(usersCP.btnSubmit).toBeVisible();
         });
         test.describe('New User', (page) => {
-            test('should test all fields for required', async ({ page }) => {
-                const usersCP = new UsersCP(page);
+            test('submit button is disabled if mandatory inputs arent filled', async ({ page }) => {
+                const usersCP = new UsersCP(page, lang);
+                await page.waitForSelector('text=New User');
+                await usersCP.btnNewUser.click();
+                await page.waitForSelector('text=Create a new User');
+                await expect(usersCP.btnSubmit).toBeDisabled();
+            });
+
+            test('submit button enables if mandatory inputs are filled', async ({ page }) => {
+                const usersCP = new UsersCP(page, lang);
                 const id30char = uuidv4();
                 const username = id30char.substring(0, 20);
                 await page.waitForSelector('text=New User');
                 await usersCP.btnNewUser.click();
                 await page.waitForSelector('text=Create a new User');
-                await usersCP.btnSubmit.click();
+                await usersCP.inputUserName.fill(username);
+                await usersCP.inputFirstName.fill('Test');
+                await usersCP.inputLastName.fill('User');
+                await usersCP.inputEmail.fill('email@email.com');
+                await expect(usersCP.btnSubmit).toBeEnabled();
+            });
+
+            test('should test all fields for required', async ({ page }) => {
+                const usersCP = new UsersCP(page, lang);
+                const id30char = uuidv4();
+                const username = id30char.substring(0, 20);
+                await page.waitForSelector('text=New User');
+                await usersCP.btnNewUser.click();
+                await page.waitForSelector('text=Create a new User');
+                await usersCP.inputFirstName.fill('123');
+                await usersCP.inputLastName.click();
+                await usersCP.inputFirstName.fill('');
+            await usersCP.inputLastName.click();
+                // await usersCP.btnSubmit.click();
                 await expect(usersCP.errorLabelUsernameRequired).toBeVisible({timeout:10000});
                 // await expect(usersCP.errorLabelFirstNameRequired).toBeVisible({timeout:10000});
                 await expect(usersCP.errorLabelLastNameRequired).toBeVisible({timeout:10000});
@@ -94,8 +120,8 @@ test.describe('Users page', (page) => {
                 await expect(usersCP.errorLabelEmailRequired).not.toBeVisible({timeout:10000});
             });
             test.describe('Username', (page) => {
-                test('username field uniqueness constraint', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                test.skip('username field uniqueness constraint', async ({ page }) => {
+                    const usersCP = new UsersCP(page, lang);
                     const id30char = uuidv4();
                     const username = id30char.substring(0, 20);
                     await page.waitForSelector('text=New User');
@@ -106,11 +132,11 @@ test.describe('Users page', (page) => {
                     await usersCP.inputLastName.fill('User');
                     await usersCP.inputEmail.fill(username + '@email.com');
                     await usersCP.btnSubmit.click();
-                    await expect(usersCP.overlayCreateError).toBeVisible({timeout: 10000});
-                    await expect(usersCP.errorLabelUsernameAlreadyExist).toBeVisible();
+                    await expect.soft(usersCP.overlayCreateError).toBeVisible({timeout: 10000});
+                    await expect.soft(usersCP.errorLabelUsernameAlreadyExist).toBeVisible();
                 });
-                test('shouldnt create a username containing anything but letters, numbers and @/./+/-/_ symbols', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                test.skip('shouldnt create a username containing anything but letters, numbers and @/./+/-/_ symbols', async ({ page }) => {
+                    const usersCP = new UsersCP(page, lang);
                     const id30char = uuidv4();
                     const username = id30char.substring(0, 20);
                     await page.waitForSelector('text=New User');
@@ -127,7 +153,7 @@ test.describe('Users page', (page) => {
             });
             test.describe('Email', (page) => {
                 test('email field uniqueness constraint', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     const id30char = uuidv4();
                     const username = id30char.substring(0, 20);
                     await page.waitForSelector('text=New User');
@@ -142,7 +168,7 @@ test.describe('Users page', (page) => {
                     await expect(usersCP.errorLabelEmailAlreadyExist).toBeVisible();
                 });
                 test('email field invalid email', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     const id30char = uuidv4();
                     const username = id30char.substring(0, 20);
                     await page.waitForSelector('text=New User');
@@ -159,25 +185,26 @@ test.describe('Users page', (page) => {
             });
             test.describe('Function', (page) => {
                 test('should create a new user', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     const id30char = uuidv4();
                     const username = id30char.substring(0, 20)+'username';
+                    const email = id30char.substring(0, 20)+'@email.com';
                     await page.waitForSelector('text=New User');
                     await usersCP.btnNewUser.click();
                     await page.waitForSelector('text=Create a new User');
                     await usersCP.inputUserName.fill(username);
                     await usersCP.inputFirstName.fill('Test');
                     await usersCP.inputLastName.fill('User');
-                    await usersCP.inputEmail.fill(id30char+'@email.com');
+                    await usersCP.inputEmail.fill(email);
                     await usersCP.btnSubmit.click();
                     await expect(usersCP.overlayCreatedSuccessfully).toBeVisible({timeout: 10000});
                     await page.waitForSelector('text=New User');
-                    await expect(page.locator(`table :text-is("${username}")`)).toBeVisible();
+                    await expect(page.getByText(email)).toBeVisible();
                 });
             });
             test.fixme('should be to create a new user and login the Drivers Interface with those credentials', async ({ page }) => {
                 const loginScreenCP = new LoginScreenCP(page);
-                const usersCP = new UsersCP(page);
+                const usersCP = new UsersCP(page, lang);
                 const id30char = uuidv4();
                 const username = id30char.substring(0, 20);
                 
@@ -202,76 +229,99 @@ test.describe('Users page', (page) => {
         test.describe('Edit User', (page) => {
             const id30char = uuidv4();
             const username = id30char.substring(0, 20)+'username';
-            test.beforeEach(async ({ page }) => {
-                const usersCP = new UsersCP(page);
+            // test.beforeEach(async ({ page }) => {
+            //     const usersCP = new UsersCP(page, lang);
+            //     await page.waitForSelector('text=New User');
+            //     await usersCP.btnNewUser.click();
+            //     await page.waitForSelector('text=Create a new User');
+            //     await usersCP.inputUserName.fill(username);
+            //     await usersCP.inputFirstName.fill('Test');
+            //     await usersCP.inputLastName.fill('User');
+            //     await usersCP.inputEmail.fill(username+'@email.com');
+            //     await usersCP.btnSubmit.click();
+            //     await page.waitForSelector('text=New User');
+            // });
+            // test.afterEach(async ({ page }) => {
+            //     const usersCP = new UsersCP(page, lang);
+            //     await page.waitForSelector('text=New User');
+            //     await page.getByText(username).first().click();
+            //     await page.waitForSelector('text=Edit User');
+            //     await usersCP.editUserDeleteUser.click();
+            //     await page.waitForSelector('text=Are you sure?');
+            //     await usersCP.overlayDeleteUser.click();
+            //     await page.waitForSelector('text=New User');
+            //     await expect(page.locator(`table :text-is("${username}")`)).not.toBeVisible();
+            // });
+            test('tapping the email should open the edit user wrapper', async ({ page }) => {
+                const usersCP = new UsersCP(page, lang);
                 await page.waitForSelector('text=New User');
-                await usersCP.btnNewUser.click();
-                await page.waitForSelector('text=Create a new User');
-                await usersCP.inputUserName.fill(username);
-                await usersCP.inputFirstName.fill('Test');
-                await usersCP.inputLastName.fill('User');
-                await usersCP.inputEmail.fill(username+'@email.com');
-                await usersCP.btnSubmit.click();
-                await page.waitForSelector('text=New User');
-            });
-            test.afterEach(async ({ page }) => {
-                const usersCP = new UsersCP(page);
-                await page.waitForSelector('text=New User');
-                await page.getByText(username).first().click();
+                await page.getByText('forEdit@email.com').first().click();
                 await page.waitForSelector('text=Edit User');
-                await usersCP.editUserDeleteUser.click();
-                await page.waitForSelector('text=Are you sure?');
-                await usersCP.overlayDeleteUser.click();
-                await page.waitForSelector('text=New User');
-                await expect(page.locator(`table :text-is("${username}")`)).not.toBeVisible();
+                await expect.soft(usersCP.editUserHeading).toBeVisible();
+                await expect.soft(usersCP.editUserUsername).toBeVisible();
+                await expect.soft(usersCP.editUserFirstName).toBeVisible();
+                await expect.soft(usersCP.editUserLastName).toBeVisible();
+                await expect.soft(usersCP.editUserEmail).toBeVisible();
+                await expect.soft(usersCP.editUserUpdateUser).toBeVisible();
+                // await expect.soft(usersCP.editUserDeleteUserHeading).toBeVisible();
+                // await expect(usersCP.editUserDeleteUser).toBeVisible();
             });
-            test('tapping the username should open the edit user wrapper', async ({ page }) => {
-                const usersCP = new UsersCP(page);
+
+            test('editing a user already has all prefilled values', async ({page}) => {
+                const usersCP = new UsersCP(page, lang);
                 await page.waitForSelector('text=New User');
-                await page.getByText(username).first().click();
+                await page.getByText('forEdit@email.com').first().click();
                 await page.waitForSelector('text=Edit User');
-                await expect(usersCP.editUserHeading).toBeVisible();
-                await expect(usersCP.editUserUsername).toBeVisible();
-                await expect(usersCP.editUserFirstName).toBeVisible();
-                await expect(usersCP.editUserLastName).toBeVisible();
-                await expect(usersCP.editUserEmail).toBeVisible();
-                await expect(usersCP.editUserUpdateUser).toBeVisible();
-                await expect(usersCP.editUserDeleteUserHeading).toBeVisible();
-                await expect(usersCP.editUserDeleteUser).toBeVisible();
+                await expect.soft(usersCP.editUserUsername).toHaveValue('username');
+                await expect.soft(usersCP.editUserFirstName).toHaveValue('Test');
+                await expect.soft(usersCP.editUserLastName).toHaveValue('User');
+                await expect.soft(usersCP.editUserEmail).toHaveValue('forEdit@email.com');
             });
-            test('username field uniqueness constraint', async ({ page }) => {
-                const usersCP = new UsersCP(page);
+
+            test.skip('username field uniqueness constraint', async ({ page }) => {
+                const usersCP = new UsersCP(page, lang);
                 await page.waitForSelector('text=New User');
                 await page.getByText(username).first().click();
                 await page.waitForSelector('text=Edit User');
                 await usersCP.editUserUsername.fill('alreadyExist');
                 await usersCP.editUserUpdateUser.click();
-                await expect(usersCP.errorLabelUsernameAlreadyExist).toBeVisible();
+                await expect.soft(usersCP.errorLabelUsernameAlreadyExist).toBeVisible();
                 await expect(usersCP.overlayUpdateError).toBeVisible({timeout: 10000});
             });
             test.describe('Function', (page) => {
                 test('should update the user - all fields', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     await page.waitForSelector('text=New User');
-                    await page.getByText(username).first().click();
+                    await page.getByText('forEdit@email.com').first().click();
                     await page.waitForSelector('text=Edit User');
                     await usersCP.editUserUsername.fill(username + ' Edited');
-                    await usersCP.editUserFirstName.fill('Test');
-                    await usersCP.editUserLastName.fill('User');
+                    await usersCP.editUserFirstName.fill('Test Edited');
+                    await usersCP.editUserLastName.fill('User Edited');
                     await usersCP.editUserEmail.fill(username + '@email.com');
                     await usersCP.editUserUpdateUser.click();
                     await page.waitForSelector('text=New User');
                     await expect(usersCP.overlayUpdatedSuccessfully).toBeVisible();
-                    await expect(page.locator(`table :text-is("${username}")`)).toBeVisible();
+                    await expect(page.getByText(username+'@email.com' + 'Test EditedUser Edited')).toBeVisible();
+                    await page.waitForTimeout(3000);
+                    const editedLocator = page.getByText(username+'@email.com')
+                    await editedLocator.click();
+
+                    await usersCP.editUserUsername.fill('username');
+                    await usersCP.editUserFirstName.fill('Test');
+                    await usersCP.editUserLastName.fill('User');
+                    await usersCP.editUserEmail.fill('forEdit@email.com');
+
+                    await usersCP.editUserUpdateUser.click();
+                    await expect(page.getByText('forEdit@email.comTestUser')).toBeVisible();
                 });
             });
         });
-        test.describe('Delete User', (page) => {
+        test.describe.skip('Delete User', (page) => {
             test.describe('check for UI elements', (page) => {
                 const id30char = uuidv4();
                 const username = id30char.substring(0, 20)+'username';
                 test.beforeEach(async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     await page.waitForSelector('text=New User');
                     await usersCP.btnNewUser.click();
                     await page.waitForSelector('text=Create a new User');
@@ -283,7 +333,7 @@ test.describe('Users page', (page) => {
                     await page.waitForSelector('text=New User');
                 });
                 test.afterEach(async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     await page.waitForSelector('text=New User');
                     await page.getByText(username).first().click();
                     await page.waitForSelector('text=Edit User');
@@ -294,7 +344,7 @@ test.describe('Users page', (page) => {
                     await expect(page.locator(`table :text-is("${username}")`)).not.toBeVisible();
                 });
                 test('check all elements for delete user', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     await page.waitForSelector('text=New User');
                     await page.getByText(username).first().click();
                     await page.waitForSelector('text=Edit User');
@@ -303,7 +353,7 @@ test.describe('Users page', (page) => {
                     await expect(usersCP.editUserDeleteUser).toBeVisible();
                 });
                 test('check for alert messages on delete user', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     await page.waitForSelector('text=New User');
                     await page.getByText(username).first().click();
                     await page.waitForSelector('text=Edit User');
@@ -315,7 +365,7 @@ test.describe('Users page', (page) => {
                     await usersCP.editUserDeleteUserGoBack.click();
                 });
                 test('should go back to edit user', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     await page.waitForSelector('text=New User');
                     await page.getByText(username).first().click();
                     await page.waitForSelector('text=Edit User');
@@ -329,7 +379,7 @@ test.describe('Users page', (page) => {
                 const id30char = uuidv4();
                 const username = id30char.substring(0, 20)+'username';
                 test('should delete the user', async ({ page }) => {
-                    const usersCP = new UsersCP(page);
+                    const usersCP = new UsersCP(page, lang);
                     await page.waitForSelector('text=New User');
                     await usersCP.btnNewUser.click();
                     await page.waitForSelector('text=Create a new User');

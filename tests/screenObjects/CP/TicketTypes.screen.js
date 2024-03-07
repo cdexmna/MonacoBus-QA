@@ -1,7 +1,7 @@
 const fs = require('fs');
 class TicketTypesCP {
-    constructor(page) {
-        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels.json"));
+    constructor(page, locale) {
+        const errorlabels = JSON.parse(fs.readFileSync("tests/screenObjects/CP/errorlabels-"+locale+".json"));
         this.page = page;
         this.errorLabels = errorlabels;
         this.strings = require('../../i18n/en-CP.json').screens.ticketTypes;
@@ -32,12 +32,20 @@ class TicketTypesCP {
         return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.name}"]`));
     }
 
+    get inputDescription() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.description}"]`))
+    }
+
     get inputPrice() {
         return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.price}"]`));
     }
 
     get inputPosition() {
         return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.position}"]`));
+    }
+
+    get inputMinimumQty() {
+        return (this.page.locator(`input[name="${this.strings.wrapper.newTicketType.inputs.minimumQty}"]`));
     }
 
     get selectIcon() {
@@ -86,6 +94,14 @@ class TicketTypesCP {
 
     get errorLabelPositionInvalid() {
         return (this.page.getByText(this.errorLabels.ticketType.positionInvalid));
+    }
+
+    get errorLabelminQuantityMin() {
+        return (this.page.getByText(this.errorLabels.ticketType.minQuantityMin));
+    }
+
+    get errorLabelminQuantityMax() {
+        return (this.page.getByText(this.errorLabels.ticketType.minQuantityMax));
     }
 
     get errorLabelIconRequired() {

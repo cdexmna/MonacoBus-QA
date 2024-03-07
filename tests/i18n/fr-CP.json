@@ -2,17 +2,17 @@
   "screens": {
     "login": {
       "biometricLogin": "Biometric login",
-      "pleaseSignIn": "Please sign in",
+      "pleaseSignIn": "Veuillez vous inscrire",
       "header": "Welcome back!",
       "usernameText": "Username",
-      "passwordText": "Password",
+      "passwordText": "Mot de passe",
       "rememberUsernameText": "Remember Username",
       "forgotPasswordText": "Forgot your password?",
       "signInTitlePinkButton": "Sign In",
       "appErrorAlertTitle": "Error",
       "signInErrorAlertTitle": "Sign In Error",
       "messageSignInErrorAlert": "Invalid server response",
-      "invalidCredentialsText": "Invalid username/password",
+      "invalidCredentialsText": "Nom d'utilisateur/mot de passe invalide",
       "googleLoginText": "Sign in with Google"
     },
     "home": {
@@ -223,7 +223,6 @@
           "newTicketType": {
             "inputs": {
               "name": "name",
-              "description": "description",
               "price": "pricePer",
               "position": "position",
               "minimumQty": "minQuantity"
